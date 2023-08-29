@@ -4,10 +4,12 @@ class DownloadsController {
     this.tablist = document.querySelector('.js-tabSection');
     this.tabs = this.tablist.querySelectorAll('[role="tab"]');
     this.panels = document.querySelectorAll('[role="tabpanel"]');
+    this.downloadNotice = document.querySelector('.js-doc-main');
 
     // OS for which to display download and install steps.
     this.osName = 'Unknown OS';
     this.osNameFromQuery = '';
+    this.version = 'go1.17';
 
     // URL to JSON containing list of installer downloads.
     const fileListUrl = '/dl/?mode=json';
@@ -42,6 +44,36 @@ class DownloadsController {
       })
       .catch(console.error);
       this.setEventListeners();
+
+      this.initDownload();
+  }
+
+  async initDownload() {
+    // https://go.dev/dl/go1.21.0.darwin-arm64.pkg
+    const notiEl = document.querySelector('.js-download-notify');
+    const dlQuery = new URL(document.URL).searchParams.get('dc') || '';
+    const detailsEl = document.querySelector('.js-goDetails');
+    const link = document.querySelector('.js-downloadLink');
+    const version = this.version;
+    if (dlQuery && dlQuery.includes('-')) {
+      const [os, arch] = dlQuery.split('-');
+      let extension = '';
+      if (os === 'windows') extension = 'msi'
+      else if (os === 'linux') extension = 'tar.gz'
+      else if (os === 'darwin') extension = 'pkg';
+      const resource = `https://go.dev/dl/${version}.${os}-${arch}.${extension}`;
+      link.href = resource;
+
+      const titleCase = (t) => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
+      detailsEl.textContent = `${version} For ${titleCase(os)} ${arch.toUpperCase()}`;
+      notiEl.style.display = 'block';
+
+      setTimeout(() => {
+        window.open(resource, '_self');
+      }, 2000); // 1.5 seconds to be sure that docs page completes loading
+    } else {
+      notiEl.style.display = 'none';
+    }
   }
 
   setEventListeners() {
@@ -52,8 +84,9 @@ class DownloadsController {
 
   // Set the download button UI version.
   setVersion(latest) {
-    document.querySelector('.js-downloadDescription').textContent =
-      `Download (${this.parseVersionNumber(latest)})`;
+    const version = this.parseVersionNumber(latest);
+    this.version = version;
+    document.querySelector('.js-downloadDescription').textContent = `Download (${version})`;
   }
 
   // Updates install tab with dynamic data.

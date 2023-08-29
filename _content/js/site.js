@@ -264,14 +264,15 @@ window.initFuncs = [];
       if (resources.length > 0) version = resources[0].version;
 
       let arch = 'amd64';
-      const macDownloadUrl = `/dl/${version}.darwin-${arch}.pkg`;
-      const windowsDownloadUrl = `/dl/${version}.windows-${arch}.msi`;
-      const linuxDownloadUrl = `/dl/${version}.linux-${arch}.tar.gz`;
+      const link = `/doc/install?dc=${os}-${arch}`;
       goVersionEl.textContent = `\u00a0(${version.replace('go', '')})`;
-
       const titleCase = (t) => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
       osAndArchEl.textContent = `For ${titleCase(os)} ${arch.toUpperCase()}`;
-      
+  
+      downloadBtn.addEventListener('click', () => {
+        window.open(link, '_self');
+      });
+
       const selectBinaryEl = document.querySelector('.js-selectBinary');
       const binaryMatrixEl = document.querySelector('.js-binaryMatrix');
       selectBinaryEl.addEventListener('click', () => {

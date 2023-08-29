@@ -462,7 +462,19 @@
       </li>
     </ul>
   </aside>
-  <div class="doc-Main">
+  <div class="doc-Main js-doc-main">
+    <div class="download-notify js-download-notify go-Message go-Message--notice">
+      <img
+        class="go-Icon"
+        height="24"
+        width="24"
+        src="/images/icons/info_gm_grey_24dp.svg"
+        alt="Notice"
+      />&nbsp;
+      Thank you for downloading <span class="js-goDetails">Go</span>.
+      <div>Your download should begin in few seconds, otherwise please try this <a class="js-downloadLink">direct link</a></div>
+    </div>
+
     {{if .breadcrumb}}
     {{breadcrumbs .}}
     {{end}}

@@ -238,7 +238,7 @@ func NewHandler(contentDir, goroot string) http.Handler {
 
 	var h http.Handler = mux
 	h = addCSP(mux)
-	h = hostEnforcerHandler(h)
+	// h = hostEnforcerHandler(h)
 	h = hostPathHandler(h)
 	return h
 }
