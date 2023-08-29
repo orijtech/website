@@ -51,6 +51,7 @@ class DownloadsController {
   async initDownload() {
     // https://go.dev/dl/go1.21.0.darwin-arm64.pkg
     const notiEl = document.querySelector('.js-download-notify');
+    notiEl.style.display = 'none';
     const dlQuery = new URL(document.URL).searchParams.get('dc') || '';
     const detailsEl = document.querySelector('.js-goDetails');
     const link = document.querySelector('.js-downloadLink');
@@ -71,8 +72,6 @@ class DownloadsController {
       setTimeout(() => {
         window.open(resource, '_self');
       }, 2000); // 1.5 seconds to be sure that docs page completes loading
-    } else {
-      notiEl.style.display = 'none';
     }
   }
 

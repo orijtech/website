@@ -290,6 +290,7 @@ window.initFuncs = [];
       });
     }
   }
+  
 
   function registerPortToggles() {
     for (const el of document.querySelectorAll('.js-togglePorts')) {
