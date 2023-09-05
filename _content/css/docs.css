@@ -305,6 +305,7 @@
 .outline-Tree a[aria-expanded='true']+ul[role='group'],
 .outline-Tree span[aria-expanded='true']+ul[role='group'] {
     display: block;
+    margin-bottom: 0;
 }
 
 .outline-Tree a[aria-level='1']+ul[role='group'],
@@ -367,6 +368,10 @@
     padding: 0 1.5rem;
 }
 
+.outline-Tree a[aria-level='1'] {
+    margin-left: -1rem;
+}
+
 .outline-Tree a:focus,
 .outline-Tree a:hover {
     text-decoration: underline;
@@ -399,7 +404,7 @@
 }
 
 .outline-Tree a[aria-level='3'] {
-    padding-left: 2.5rem;
+    padding-left: 2rem;
 }
 
 .outline-Tree a[aria-level='4'] {
