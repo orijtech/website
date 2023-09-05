@@ -767,12 +767,12 @@ a.Footer-link--primary {
   width: 18.5rem;
   left: -1px;
 }
-.Header-menu li:nth-child(4) .Header-submenu {
+.Header-menu li:nth-child(3) .Header-submenu {
   left: -12rem;
   height: 19.275rem;
   width: 37.25rem;
 }
-.Header-menu li:nth-child(6) .Header-submenu {
+.Header-menu li:nth-child(5) .Header-submenu {
   right: -1px;
   height: 17.65rem;
   width: 37.25rem;
@@ -5585,7 +5585,7 @@ tbody.otherDistribution {
     color: var(--black-1);
   }
   table.binaryMatrix-Table {
-    min-width: 18.75rem;
+    min-width: 18.5rem;
     border-collapse: collapse;
     font-size: 1rem;
     margin-bottom: 0.3rem;
@@ -5612,5 +5612,5 @@ tbody.otherDistribution {
 .download-notify {
   padding: 0.5rem;
   margin-top: calc(var(--site-header-height) / 2);
-  display: 'none';
+  display: none;
 }

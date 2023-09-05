@@ -343,6 +343,10 @@
     border-left: 0.01rem solid var(--color-border);
 }
 
+.outline-Tree span[aria-level='2'][aria-expanded] {
+    padding-left: 1.25rem;
+}
+
 .outline-Tree span[aria-expanded='true'] {
     background-color: var(--color-background);
     color: var(--color-text);
@@ -420,11 +424,25 @@
     padding: 0.1rem;
 }
 
+.outline-Tree span[aria-expanded][aria-owns][aria-level='2']::before {
+    border-bottom: 0.25rem solid transparent;
+    border-left: 0.25rem solid var(--color-text);
+    border-right: 0;
+    border-top: 0.25rem solid transparent;
+    content: '';
+    display: block;
+    height: 0;
+    left: 0.65rem;
+    position: absolute;
+    top: 0.8rem;
+    transition: transform 0.1s linear;
+    width: 0;
+}
+
 .outline-Tree a[aria-expanded][aria-owns][aria-level='1']::before,
 .outline-Tree a[aria-expanded][aria-owns][aria-level='2']::before,
 .outline-Tree a[aria-expanded][aria-owns][aria-level='3']::before,
 .outline-Tree span[aria-expanded][aria-owns][aria-level='1']::before,
-.outline-Tree span[aria-expanded][aria-owns][aria-level='2']::before,
 .outline-Tree span[aria-expanded][aria-owns][aria-level='3']::before {
     border-bottom: 0.25rem solid transparent;
     border-left: 0.25rem solid var(--color-text);

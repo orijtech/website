@@ -41,7 +41,7 @@ summary: Go is an open source programming language that makes it simple to build
         <div role="group" class="BtnGroup">
           <div class="BtnGroup-sub">
             <button class="mainBtn go-Button go-Button--accented js-downloadBtn" aria-label="Download" aria-describedby="download-description">
-              <span>Download Go <small class="js-goVersion"></small></span>
+              <span>Download Go <span class="js-goVersion"></span></span>
               <small class="go-Chip go-Chip--accented js-osAndArch"></small>
             </button>
             <button class="go-Button go-Button--accented js-selectBinary" aria-haspopup="menu" aria-label="select binary type to download">
@@ -92,8 +92,7 @@ summary: Go is an open source programming language that makes it simple to build
           </div>
         </div>
         <a class="Secondary secondaryBtn" href="/play/" aria-label="Try a Tour of Go" aria-describedby="tryGoTour-description" role="button">
-          <span>Not ready to download Go?</span>
-          <small>Try a tour of Go</small>
+          <p>Take a tour of Go</p>
         </a>
         <div class="screen-reader-only" id="download-description" hidden>
           Downloads Go and opens a new window with instructions to install Go.

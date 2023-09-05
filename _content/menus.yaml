@@ -11,8 +11,6 @@ main:
       - name: Security
         explanation: How Go can help keep you secure by default
         url: /security/
-  - name: Download
-    url: /dl/
   - name: Learn
     url: /learn/
   - name: Docs
@@ -70,6 +68,8 @@ main:
               url: 'https://stackoverflow.com/tags/go',
             },
           ]
+  - name: Download
+    url: /doc/install
 
 footer:
   - name: Why Go

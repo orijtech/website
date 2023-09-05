@@ -58,15 +58,22 @@ class DownloadsController {
     const version = this.version;
     if (dlQuery && dlQuery.includes('-')) {
       const [os, arch] = dlQuery.split('-');
+      let osCommonName = '';
       let extension = '';
-      if (os === 'windows') extension = 'msi'
-      else if (os === 'linux') extension = 'tar.gz'
-      else if (os === 'darwin') extension = 'pkg';
+      if (os === 'windows') {
+        extension = 'msi';
+        osCommonName = 'Windows';
+      } else if (os === 'linux') {
+        extension = 'tar.gz';
+        osCommonName = 'Linux';
+      } else if (os === 'darwin') {
+        extension = 'pkg';
+        osCommonName = 'MacOS';
+      }
       const resource = `https://go.dev/dl/${version}.${os}-${arch}.${extension}`;
       link.href = resource;
 
-      const titleCase = (t) => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
-      detailsEl.textContent = `${version} For ${titleCase(os)} ${arch.toUpperCase()}`;
+      detailsEl.textContent = `${version} ${osCommonName} ${arch.toUpperCase()}`;
       notiEl.style.display = 'block';
 
       setTimeout(() => {

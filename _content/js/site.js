@@ -265,9 +265,12 @@ window.initFuncs = [];
 
       let arch = 'amd64';
       const link = `/doc/install?dc=${os}-${arch}`;
-      goVersionEl.textContent = `\u00a0(${version.replace('go', '')})`;
-      const titleCase = (t) => t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
-      osAndArchEl.textContent = `For ${titleCase(os)} ${arch.toUpperCase()}`;
+      goVersionEl.textContent = `\u00a0${version.replace('go', '')}`;
+      let osCommonName = '';
+      if (os === 'windows') osCommonName = 'Windows';
+      else if (os === 'linux') osCommonName = 'Linux';
+      else if (os === 'darwin') osCommonName = 'MacOS';
+      osAndArchEl.textContent = `${osCommonName} ${arch.toUpperCase()}`;
   
       downloadBtn.addEventListener('click', () => {
         window.open(link, '_self');
@@ -282,11 +285,6 @@ window.initFuncs = [];
         } else {
           binaryMatrixEl.style.display = 'block';
         }
-      });
-
-      const dlUrl = os === 'darwin' ? macDownloadUrl : (os === 'linux' ? linuxDownloadUrl : windowsDownloadUrl);
-      downloadBtn.addEventListener('click', () => {
-        window.open(dlUrl, '_self');
       });
     }
   }
