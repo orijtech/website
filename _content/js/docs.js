@@ -30,6 +30,15 @@ window.addEventListener('load', () => {
       allowMultipleTreeExpansion: true,
     });
   }
+
+  const outlineToggler = document.querySelector('.js-outline-button');
+  if (outlineToggler) {
+    outlineToggler.addEventListener('click', () => {
+      /** @type {HTMLElement} */
+      const docOutline = document.querySelector('.doc-Outline');
+      docOutline.classList.toggle('show-Outline');
+    });
+  }
 });
 
 /**

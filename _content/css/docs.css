@@ -2,14 +2,29 @@
     --doc-max-width: 50.75rem;
     --doc-sidebar-width: 21rem;
     --site-header-height: 3.5rem;
+    --break-point-md: 48rem;
+    --break-point-lg: 62rem;
+    --break-point-xl: 75rem;
+    --sidebar-menu-zIndex: 100;
 
     display: grid;
     height: 100%;
-    grid-template-areas: "outline main toc";
-    grid-template-columns: 21.5% auto 21.5%;
+    grid-template-areas: "main";
+    grid-template-columns: auto;
     gap: 1.5rem;
     color: var(--color-text);
     padding: 0;
+}
+
+@media only screen and (min-width: var(--break-point-md)) {
+    .Documentation {
+        height: 100%;
+        grid-template-areas: "outline main toc";
+        grid-template-columns: 21.5% auto 21.5%;
+        gap: 1.5rem;
+        color: var(--color-text);
+        padding: 0;
+    }
 }
 
 .Documentation .Article-author,
@@ -101,6 +116,23 @@
     top: var(--site-header-height);
     overflow-y: auto;
     max-height: 100vh;
+    margin-left: calc(var(--break-point-md) * -1);
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 90%;
+    z-index: calc(var(--sidebar-menu-zIndex) - 1);
+    transition: margin-left 0.3s;
+}
+
+@media only screen and (min-width: var(--break-point-md)) {
+    .doc-Outline {
+        transition: margin-left 0.3s;
+    }
+}
+
+.show-Outline {
+    margin-left: 0;
 }
 
 .doc-TableOfContent {
@@ -111,6 +143,13 @@
     top: var(--site-header-height);
     max-height: 100vh;
     overflow-y: auto;
+    display: none;
+}
+
+@media only screen and (min-width: var(--break-point-md)) {
+    .doc-TableOfContent {
+        display: grid;
+    }
 }
 
 .doc-TableOfContent>p {
@@ -122,8 +161,14 @@
 
 .doc-Main {
     grid-area: main;
-    margin-right: auto;
+    margin: 0 1.5rem;
     max-width: var(--doc-max-width);
+}
+
+@media screen and (min-width: var(--break-point-md)) {
+    .doc-Main {
+        max-width: var(--break-point-md) - 5rem;
+    }
 }
 
 .toc-Tree[role='tree'] {
@@ -268,7 +313,6 @@
     height: 100vh;
     overflow-y: auto;
     padding: 0.5rem 0.25rem 0;
-    /* margin-top: var(--site-header-height); */
 }
 
 
@@ -482,4 +526,23 @@
 
 .outline-Tree a[aria-selected='true'][aria-level='4'] {
     border-left: 0.125rem solid var(--color-brand-primary);
+}
+
+.outline-button {
+    background-color: var(--gray-6);
+    border: none;
+    border-radius: 0.65rem;
+    bottom: 1.5rem;
+    display: flex;
+    left: 1.2rem;
+    margin-bottom: env(safe-area-inset-bottom);
+    padding: 1rem;
+    position: fixed;
+    z-index: var(--sidebar-menu-zIndex);
+}
+
+@media screen and (min-width: var(--break-point-md)) {
+    .outline-button {
+        display: none;
+    }
 }
