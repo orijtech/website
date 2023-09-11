@@ -92,7 +92,7 @@ summary: Go is an open source programming language that makes it simple to build
           </div>
         </div>
         <a class="Secondary secondaryBtn" href="/play/" aria-label="Try a Tour of Go" aria-describedby="tryGoTour-description" role="button">
-          <p>Take a tour of Go</p>
+          <p>Try Go</p>
         </a>
         <div class="screen-reader-only" id="download-description" hidden>
           Downloads Go and opens a new window with instructions to install Go.

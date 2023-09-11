@@ -16,7 +16,7 @@
     padding: 0;
 }
 
-@media only screen and (min-width: var(--break-point-md)) {
+@media only screen and (min-width: 48rem) {
     .Documentation {
         height: 100%;
         grid-template-areas: "outline main toc";
@@ -83,18 +83,21 @@
     padding: 1.5rem;
 }
 
+.Documentation code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 .Documentation pre,
 .Documentation code {
     color: var(--color-text);
 }
 
 .Documentation pre {
-    background: var(--color-background-accented);
-}
-
-.Documentation pre {
+    background-color: var(--color-background-accented);
     padding: 0.5rem 1.75rem;
     border-radius: 4px;
+    overflow-x: auto;
 }
 
 /** manage anchors matching with links due to fixed top navbar */
@@ -112,22 +115,23 @@
     background-color: var(--color-background-accented);
     padding: 1rem;
     max-width: var(--doc-sidebar-width);
-    position: sticky;
     top: var(--site-header-height);
     overflow-y: auto;
     max-height: 100vh;
     margin-left: calc(var(--break-point-md) * -1);
     position: fixed;
-    overflow-x: hidden;
     overflow-y: scroll;
     width: 90%;
     z-index: calc(var(--sidebar-menu-zIndex) - 1);
     transition: margin-left 0.3s;
 }
 
-@media only screen and (min-width: var(--break-point-md)) {
+@media only screen and (min-width: 48rem) {
     .doc-Outline {
         transition: margin-left 0.3s;
+        margin-left: 0;
+        width: auto;
+        position: sticky;
     }
 }
 
@@ -146,9 +150,9 @@
     display: none;
 }
 
-@media only screen and (min-width: var(--break-point-md)) {
+@media only screen and (min-width: 48rem) {
     .doc-TableOfContent {
-        display: grid;
+        display: block;
     }
 }
 
@@ -162,10 +166,10 @@
 .doc-Main {
     grid-area: main;
     margin: 0 1.5rem;
-    max-width: var(--doc-max-width);
+    max-width: var(--js-docs-max-width);
 }
 
-@media screen and (min-width: var(--break-point-md)) {
+@media screen and (min-width: 48rem) {
     .doc-Main {
         max-width: var(--break-point-md) - 5rem;
     }
@@ -541,7 +545,7 @@
     z-index: var(--sidebar-menu-zIndex);
 }
 
-@media screen and (min-width: var(--break-point-md)) {
+@media screen and (min-width: 48rem) {
     .outline-button {
         display: none;
     }

@@ -1,5 +1,26 @@
 // when page loads
 window.addEventListener('load', () => {
+  const outlineClass = 'show-Outline';
+  // Set --js-docs-max-width for use in setting up doc max-width for small devices
+  /** @type {HTMLElement} */
+  const outlineToggler = document.querySelector('.js-outline-button');
+  const docOutline = document.querySelector('.js-doc-Outline');
+  const main = document.getElementById("main-content");
+  const doc = document.querySelector('.js-Documentation');
+  if (main) {
+    resizeDoc(main);
+    main.addEventListener('click', (e) => {
+      const clickedOutsideToggler = e.target !== outlineToggler.firstChild
+        && e.target !== outlineToggler.firstElementChild
+        && e.target !== outlineToggler;
+        if (clickedOutsideToggler) {
+          if (docOutline.classList.contains(outlineClass)) {
+            docOutline.classList.remove(outlineClass)
+          }
+        }
+    });
+  }
+
   // Load the toc outline for a documentation page
   const tocRoot = document.querySelector("[role='tree'].js-toc-tree");
   if (tocRoot) {
@@ -31,13 +52,20 @@ window.addEventListener('load', () => {
     });
   }
 
-  const outlineToggler = document.querySelector('.js-outline-button');
   if (outlineToggler) {
-    outlineToggler.addEventListener('click', () => {
-      /** @type {HTMLElement} */
-      const docOutline = document.querySelector('.doc-Outline');
-      docOutline.classList.toggle('show-Outline');
+    outlineToggler.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (docOutline) {
+        docOutline.classList.toggle('show-Outline');
+      }
     });
+  }
+
+  function resizeDoc(rootEl) {
+    if (doc) {
+      const width = (rootEl.clientWidth - 32) + 'px';
+      doc.style.setProperty('--js-docs-max-width', width);
+    }
   }
 });
 
