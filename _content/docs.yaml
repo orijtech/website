@@ -3,11 +3,15 @@ subjects:
     children:
       - name: Installing Go
         url: /doc/install
-      - name: Setup Editor
-        url: /doc/editors
-      - name: Setup Tools
+      - name: Editors and Tools
         children:
-          - name: gopls
+          - name: VSCode
+            url: https://marketplace.visualstudio.com/items?itemName=golang.go
+          - name: GoLand
+            url: https://www.jetbrains.com/go
+          - name: Vim-go
+            url: https://github.com/fatih/vim-go
+          - name: Gopls
             url: https://pkg.go.dev/golang.org/x/tools/gopls
       - name: Hello Go
         url: /doc/tutorial/getting-started
