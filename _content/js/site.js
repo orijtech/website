@@ -269,7 +269,10 @@ window.initFuncs = [];
       let osCommonName = '';
       if (os === 'windows') osCommonName = 'Windows';
       else if (os === 'linux') osCommonName = 'Linux';
-      else if (os === 'darwin') osCommonName = 'MacOS';
+      else if (os === 'darwin') {
+        arch = 'arm64';
+        osCommonName = 'MacOS';
+      }
       osAndArchEl.textContent = `${osCommonName} ${arch.toUpperCase()}`;
   
       downloadBtn.addEventListener('click', () => {

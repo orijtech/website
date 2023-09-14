@@ -61,8 +61,8 @@ summary: Go is an open source programming language that makes it simple to build
                 <tr>
                   <td scope="row"><p>MacOS</p></td>
                   <td>
-                    <p><span class="go-Chip go-Chip--accented">ARM64</span></p>
                     <p><span class="go-Chip go-Chip--accented">AMD64</span></p>
+                    <p><span class="go-Chip go-Chip--accented">ARM64</span></p>
                   </td>
                   <td>
                     <p><a href="/doc/install?dc=darwin-arm64"><img class="go-Icon" height="24" width="24" src="/images/icons/insert_drive_file_gm_grey_24dp.svg" alt=""></a></p>

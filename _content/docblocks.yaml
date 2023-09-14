@@ -1,0 +1,18 @@
+- title: Tutorials for getting started
+  description: Get a brief introduction to Go programming. Along the way, you will install Go (if you haven't already).
+  url: /doc/tutorial/getting-started
+- title: Effective Go
+  description: Tips for writing clear, performant, and idiomatic Go code
+  url: /doc/effective_go
+- title: Standard Library documentation
+  description: Reference documentation for Go's standard library
+  url: https://pkg.go.dev/std
+- title: Contribution Guide
+  description: Go through the process of contributing to the Go projtect.
+  url: /doc/contribute
+- title: Tour of Go
+  description: Follow a tour of the Go programming language, covering the basics to the advanced.
+  url: /tour
+- title: All releases
+  description: Learn what's new in each Go release
+  url: /doc/devel/release

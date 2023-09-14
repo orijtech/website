@@ -500,14 +500,16 @@
     {{.Content}}
   </div>
   <aside class="doc-TableOfContent">
-    <p>
-      <span>This page &nbsp;</span>
-      <button class="go-Button go-Button--text js-expand-toc" aria-label="collapse table of content">
-        <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-down-double.svg" alt="">
-        <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-up-double.svg" alt="" style="display:none">
-      </button>
-    </p>
-    <ul class="toc-Tree js-toc-tree" role="tree"></ul>
+    {{ if not .hidepageoutline }}
+      <p>
+        <span>This page &nbsp;</span>
+        <button class="go-Button go-Button--text js-expand-toc" aria-label="collapse table of content">
+          <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-down-double.svg" alt="">
+          <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-up-double.svg" alt="" style="display:none">
+        </button>
+      </p>
+      <ul class="toc-Tree js-toc-tree" role="tree"></ul>
+    {{ end }}
   </aside>
 </article>
 {{end}}
