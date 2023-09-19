@@ -6,11 +6,9 @@ subjects:
       - name: Editors and Tools
         children:
           - name: VSCode
-            url: https://marketplace.visualstudio.com/items?itemName=golang.go
-          - name: GoLand
-            url: https://www.jetbrains.com/go
-          - name: Vim-go
-            url: https://github.com/fatih/vim-go
+            url: /doc/tutorial/configure-vscode
+          - name: Vim-Go and GoLand
+            url: /doc/tutorial/configure-vimgo-goland
           - name: Gopls
             url: https://pkg.go.dev/golang.org/x/tools/gopls
       - name: Hello Go
@@ -49,8 +47,6 @@ subjects:
         url: /doc/pgo
       - name: Getting started with Generics
         url: /doc/tutorial/generics
-      - name: Fuzzing
-        url: /security/fuzz/
       - name: Getting started with fuzzing
         url: /doc/tutorial/fuzz
   - name: Tour of Go

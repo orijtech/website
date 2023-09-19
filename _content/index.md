@@ -117,53 +117,6 @@ summary: Go is an open source programming language that makes it simple to build
     </div>
   </div>
 </section>
-<section class="WhoUses">
-  <div class="WhoUses-gridContainer">
-    <div class="WhoUses-header">
-      <h2 class="WhoUses-headerH2">Companies using Go</h2>
-      <p class="WhoUses-subheader">Organizations in every industry use Go to power their software and services
-        <a href="/solutions/" class="WhoUsesCaseStudyList-seeAll" aria-describedby="newwindow-description">
-        View all stories
-       </a>
-     </p>
-    </div>
-  <div class="WhoUsesCaseStudyList">
-    <ul class="WhoUsesCaseStudyList-gridContainer">
-    {{- range newest (pages "/solutions/*")}}{{if eq .series "Case Studies"}}
-      {{- if .link }}
-        {{- if .inLandingPageGrid }}
-          <li class="WhoUsesCaseStudyList-caseStudy">
-            <a href="{{.link}}" aria-label="View CaseStudy of {{.company}}, (opens in new window)" target="_blank" rel="noopener"
-              class="WhoUsesCaseStudyList-caseStudyLink">
-              <img
-                loading="lazy"
-                height="48"
-                width="30%"
-                src="/images/logos/{{.logoSrc}}"
-                class="WhoUsesCaseStudyList-logo"
-                alt="">
-            </a>
-          </li>
-        {{- end}}
-      {{- else}}
-        <li class="WhoUsesCaseStudyList-caseStudy">
-          <a href="{{.URL}}" aria-label="View CaseStudy of {{.company}}, (opens in new window)" class="WhoUsesCaseStudyList-caseStudyLink">
-            <img
-              loading="lazy"
-              height="48"
-              width="30%"
-              src="/images/logos/{{.logoSrc}}"
-              class="WhoUsesCaseStudyList-logo"
-              alt="">
-            <p>View case study</p>
-          </a>
-        </li>
-      {{- end}}
-    {{- end}}
-    {{- end}}
-    </ul>
-  </div>
-</section>
 <section class="TestimonialsGo">
   <div class="GoCarousel">
     <div class="GoCarousel-controlsContainer">
@@ -309,6 +262,53 @@ func main() {
     </ul>
   </div>
 </section>
+<section class="WhoUses">
+  <div class="WhoUses-gridContainer">
+    <div class="WhoUses-header">
+      <h2 class="WhoUses-headerH2">Companies using Go</h2>
+      <p class="WhoUses-subheader">Organizations in every industry use Go to power their software and services
+        <a href="/solutions/" class="WhoUsesCaseStudyList-seeAll" aria-describedby="newwindow-description">
+        View all stories
+       </a>
+     </p>
+    </div>
+  <div class="WhoUsesCaseStudyList">
+    <ul class="WhoUsesCaseStudyList-gridContainer">
+    {{- range newest (pages "/solutions/*")}}{{if eq .series "Case Studies"}}
+      {{- if .link }}
+        {{- if .inLandingPageGrid }}
+          <li class="WhoUsesCaseStudyList-caseStudy">
+            <a href="{{.link}}" aria-label="View CaseStudy of {{.company}}, (opens in new window)" target="_blank" rel="noopener"
+              class="WhoUsesCaseStudyList-caseStudyLink">
+              <img
+                loading="lazy"
+                height="48"
+                width="30%"
+                src="/images/logos/{{.logoSrc}}"
+                class="WhoUsesCaseStudyList-logo"
+                alt="">
+            </a>
+          </li>
+        {{- end}}
+      {{- else}}
+        <li class="WhoUsesCaseStudyList-caseStudy">
+          <a href="{{.URL}}" aria-label="View CaseStudy of {{.company}}, (opens in new window)" class="WhoUsesCaseStudyList-caseStudyLink">
+            <img
+              loading="lazy"
+              height="48"
+              width="30%"
+              src="/images/logos/{{.logoSrc}}"
+              class="WhoUsesCaseStudyList-logo"
+              alt="">
+            <p>View case study</p>
+          </a>
+        </li>
+      {{- end}}
+    {{- end}}
+    {{- end}}
+    </ul>
+  </div>
+</section>
 <section class="GettingStartedGo">
   <div class="GettingStartedGo-gridContainer">
     <div class="GettingStartedGo-header">
@@ -317,7 +317,7 @@ func main() {
         Explore a wealth of learning resources, including guided journeys, courses, books, and more.
       </p>
       <div class="GettingStartedGo-ctas">
-        <a class="GettingStartedGo-primaryCta" href="/learn/"aria-describedby="newwindow-description">Get Started</a>
+        <a class="GettingStartedGo-primaryCta" href="/doc/"aria-describedby="newwindow-description">Get Started</a>
         <a href="/doc/install/" aria-describedby="newwindow-description">Download Go</a>
       </div>
     </div>
