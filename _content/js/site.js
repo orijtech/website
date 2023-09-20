@@ -264,8 +264,7 @@ window.initFuncs = [];
       if (resources.length > 0) version = resources[0].version;
 
       let arch = 'amd64';
-      const link = `/doc/install?dc=${os}-${arch}`;
-      goVersionEl.textContent = `\u00a0${version.replace('go', '')}`;
+      if (goVersionEl) goVersionEl.textContent = `\u00a0${version.replace('go', '')}`;
       let osCommonName = '';
       if (os === 'windows') osCommonName = 'Windows';
       else if (os === 'linux') osCommonName = 'Linux';
@@ -273,22 +272,28 @@ window.initFuncs = [];
         arch = 'arm64';
         osCommonName = 'MacOS';
       }
-      osAndArchEl.textContent = `${osCommonName} ${arch.toUpperCase()}`;
-  
-      downloadBtn.addEventListener('click', () => {
-        window.open(link, '_self');
-      });
+      
+      if (osAndArchEl) osAndArchEl.textContent = `${osCommonName} ${arch.toUpperCase()}`;
+
+      const link = `/doc/install?dc=${os}-${arch}`;
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          window.open(link, '_self');
+        });
+      }
 
       const selectBinaryEl = document.querySelector('.js-selectBinary');
       const binaryMatrixEl = document.querySelector('.js-binaryMatrix');
-      selectBinaryEl.addEventListener('click', () => {
-        const display = binaryMatrixEl.style.display;
-        if (display ===  'block') {
-          binaryMatrixEl.style.display = 'none';
-        } else {
-          binaryMatrixEl.style.display = 'block';
-        }
-      });
+      if (selectBinaryEl && selectBinaryEl) {
+        selectBinaryEl.addEventListener('click', () => {
+          const display = binaryMatrixEl.style.display;
+          if (display ===  'block') {
+            binaryMatrixEl.style.display = 'none';
+          } else {
+            binaryMatrixEl.style.display = 'block';
+          }
+        });
+      }
     }
   }
   

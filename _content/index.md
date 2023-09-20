@@ -317,8 +317,8 @@ func main() {
         Explore a wealth of learning resources, including guided journeys, courses, books, and more.
       </p>
       <div class="GettingStartedGo-ctas">
-        <a class="GettingStartedGo-primaryCta" href="/doc/"aria-describedby="newwindow-description">Get Started</a>
-        <a href="/doc/install/" aria-describedby="newwindow-description">Download Go</a>
+        <a class="GettingStartedGo-primaryCta" href="/doc/install/"aria-describedby="newwindow-description">Get Started</a>
+        <a href="/dl/" aria-describedby="newwindow-description">Download Go</a>
       </div>
     </div>
     <div class="GettingStartedGo-resourcesSection">

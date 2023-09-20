@@ -92,16 +92,16 @@ class DownloadsController {
   setVersion(latest) {
     const version = this.parseVersionNumber(latest);
     this.version = version;
-    document.querySelector('.js-downloadDescription').textContent = `Download (${version})`;
+    const descEl = document.querySelector('.js-downloadDescription');
+    if (descEl) descEl.textContent = `Download (${version})`;
   }
 
   // Updates install tab with dynamic data.
   setInstallTabData(osName) {
     const fnId = `#${osName}-filename`;
     const el = document.querySelector(fnId);
-    if (!el) {
-      return;
-    }
+    if (!el) return;
+    
     switch(osName) {
       case 'linux':
         // Update filename for linux installation step

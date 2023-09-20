@@ -427,6 +427,28 @@
 <span class="text-muted">{{strings.Join (slice $elems (len $prefix) (len $elems)) "/"}}</span>
 {{end}}
 
+{{define "navigation url file"}}
+{{$elem := nav .url .file}}
+<nav class="doc-Navigation">
+  {{if $elem.Prev}}
+  <div class="doc-Navigation-prev">
+    <a href="{{$elem.Prev.URL}}">
+      <span class="doc-Navigation-desc">Prev</span>
+      <span>{{$elem.Prev.Name}}</span>
+    </a>
+  </div>
+  {{end}}
+  {{ if $elem.Next }}
+  <div class="doc-Navigation-next">
+    <a href="{{$elem.Next.URL}}">
+      <span class="doc-Navigation-desc">Next</span>
+      <span>{{$elem.Next.Name}}</span>
+    </a>
+  </div>
+  {{end}}
+</nav>
+{{- end}}
+
 {{/* layout for the existing */}}
 {{define "doclayout"}}
 {{if .hidetoc}}
@@ -458,7 +480,7 @@
   <aside class="doc-Outline js-doc-Outline">
     <ul class="outline-Tree js-outline-tree" role="tree">
       <li>
-        <ul>{{treenav .}}</ul>
+        <ul>{{treenav}}</ul>
       </li>
     </ul>
   </aside>
@@ -498,6 +520,8 @@
     <h2 class="subtitle">{{.}}</h2>
     {{end}}
     {{.Content}}
+
+    {{navigation .URL "/docs.yaml" }}
   </div>
   <aside class="doc-TableOfContent">
     {{ if not .hidepageoutline }}
@@ -575,6 +599,6 @@
 
 {{define "treenav"}}
   {{$docs := data "/docs.yaml"}}
-  {{template "treeitems" $docs.subjects}}
+  {{template "treeitems" $docs}}
 {{end}}
 {{/* end outlining templating */}}

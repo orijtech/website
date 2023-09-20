@@ -3,37 +3,35 @@
   "Breadcrumb": true
 }-->
 
+<!--{
+	"Title": "How to Download and Install Go",
+  "Breadcrumb": true
+}-->
+
+<p>This page reviews the simplest ways to download and install Go.</p>
 <p>
-  Download and install Go quickly with the steps described here.
+  Note: the instructions below explain how to install Go on Windows, Mac, and Linux;
+  for details on how to install from source, 
+  <a href="/doc/install/source">see here.</a>
 </p>
-<p>For other content on installing, you might be interested in:</p>
-<ul>
-  <li>
-    <a href="/doc/manage-install">Managing Go installations</a> -- How to
-    install multiple versions and uninstall.
-  </li>
-  <li>
-    <a href="/doc/install/source">Installing Go from source</a> -- How to
-    check out the sources, build them on your own machine, and run them.
-  </li>
-</ul>
-<p class="DownloadBtn">
-  <a href="/dl/" id="start" class="btn download">
-    <span id="download-description" class="js-downloadDescription">
-      Download
-    </span>
-  </a>
+
+<h2>Download and Install Go</h2>
+<p>
+  Download the latest stable release of Go, 
+  then follow the steps listed below depending on your operating system: 
 </p>
+
+<div data-version="" class="js-latestGoVersion">
+  <button class="mainBtn go-Button go-Button--accented js-downloadBtn" aria-label="Download" aria-describedby="download-description">
+    <span>Download Go <span class="js-goVersion"></span></span>
+    <small class="go-Chip go-Chip--accented js-osAndArch"></small>
+  </button>
+</div>
 <p>
   Don't see your operating system here? Try one of the
   <a href="/dl/">other downloads</a>.
 </p>
 
-<h2 id="install">Go installation</h2>
-<p>
-  Select the tab for your computer's operating system below, then follow its
-  installation instructions.
-</p>
 <div id="os-install-tabs" class="TabSection js-tabSection">
   <div id="os-install-tablist" class="TabSection-tabList" role="tablist">
     <button
@@ -208,12 +206,42 @@
     </ol>
   </div>
 </div>
-<h2 id="code">You're all set!</h2>
-<p class="DocInstall-footer">
-  Visit the
-  <a href="tutorial/getting-started.html">Getting Started tutorial</a> to write
-  some simple Go code. It takes about 10 minutes to complete.
-</p>
+
+<h2>Verify your Go Version</h2>
+You may wish to verify which version of Go you have downloaded. 
+To do this, open a command prompt and enter the command <code>go version</code>.
+The output will show the version you installed. 
+
+<pre class="CopyPaste">
+  <span>$ go version</span>
+  <button aria-label="Copy and paste the code.">
+    <img class="CopyPaste-icon" src="/images/icons/copy-paste.svg" />
+    <img class="CopyPaste-icon CopyPaste-icon-dark" src="/images/icons/copy-paste-dark.svg" />
+  </button>
+</pre>
+
+<h2>Additional Resources</h2>
+<p>For futher assitance on installation questions, consult the following resources:</p>
+
+<ul>
+  <li>
+    <a href="/doc/tutorial/getting-started">Tutorial: Getting started with Go:</a> 
+    How to install Go and write your first Go program.
+  </li>
+  <li>
+    <a href="/doc/manage-install#installing-multiple-go-versions">Managing Go installations:</a> 
+    How to install multiple versions of Go on the same machine, and how to uninstall Go.
+  </li>
+  <li>
+    <a href="/doc/install/source">Installing Go from source:</a> 
+    How to build and run Go on your own machine, from source code.
+  </li>
+  <li>
+    <a href="/doc/devel/release">Release history</a>
+    Summarizes changes made to Go between stable releases.
+  </li>
+</ul>
+
 
 <script async src="/doc/download.js"></script>
 <script async src="/doc/hats.js"></script>
