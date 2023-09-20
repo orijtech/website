@@ -118,6 +118,7 @@ func (site *siteDir) nav(pivotURL string, file string) NavURL {
 			if next < len(urls) {
 				navURL.Next = urls[next]
 			}
+			break
 		}
 	}
 	return navURL
