@@ -287,11 +287,7 @@ window.initFuncs = [];
       if (selectBinaryEl && selectBinaryEl) {
         selectBinaryEl.addEventListener('click', () => {
           const display = binaryMatrixEl.style.display;
-          if (display ===  'block') {
-            binaryMatrixEl.style.display = 'none';
-          } else {
-            binaryMatrixEl.style.display = 'block';
-          }
+          binaryMatrixEl.classList.toggle('show');
         });
       }
     }

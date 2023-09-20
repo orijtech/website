@@ -5470,6 +5470,7 @@ a.downloadBox:hover .filename span {
 .binaryMatrix {
   display: none;
   position: absolute;
+  z-index: 10;
   top: 3rem;
   left: 0;
   white-space: nowrap;
@@ -5613,4 +5614,8 @@ tbody.otherDistribution {
   padding: 0.5rem;
   margin-top: calc(var(--site-header-height) / 2);
   display: none;
+}
+
+.show {
+  display: block;
 }
