@@ -639,7 +639,7 @@
 .doc-Navigation-context {
     display: block;
     line-height: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 300;
     color: var(--color-text);
 }
