@@ -636,6 +636,14 @@
     color: var(--color-text-subtle);
 }
 
+.doc-Navigation-context {
+    display: block;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--color-text);
+}
+
 @media screen and (min-width: 48rem) {
     .doc-Navigation {
         grid-template-columns: repeat(2, 1fr);

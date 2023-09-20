@@ -430,22 +430,32 @@
 {{define "navigation url file"}}
 {{$elem := nav .url .file}}
 <nav class="doc-Navigation">
+  <div class="doc-Navigation-item">
   {{if $elem.Prev}}
   <div class="doc-Navigation-prev">
     <a href="{{$elem.Prev.URL}}">
       <span class="doc-Navigation-desc">Prev</span>
+      {{if $elem.Prev.Context}}
+      <span class="doc-Navigation-context">{{$elem.Prev.Context}}</span>
+      {{end}}
       <span>{{$elem.Prev.Name}}</span>
     </a>
   </div>
   {{end}}
+  </div>
+  <div class="doc-Navigation-item">
   {{ if $elem.Next }}
   <div class="doc-Navigation-next">
     <a href="{{$elem.Next.URL}}">
       <span class="doc-Navigation-desc">Next</span>
+      {{if $elem.Next.Context}}
+      <span class="doc-Navigation-context">{{$elem.Next.Context}}</span>
+      {{end}}
       <span>{{$elem.Next.Name}}</span>
     </a>
   </div>
   {{end}}
+  </div>
 </nav>
 {{- end}}
 

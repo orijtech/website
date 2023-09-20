@@ -31,8 +31,9 @@ type docTree struct {
 }
 
 type NavInfo struct {
-	Name string
-	URL  string
+	Name    string
+	URL     string
+	Context string
 }
 
 type NavURL struct {
@@ -41,14 +42,19 @@ type NavURL struct {
 }
 
 // flattenURLs returns a flat list of all the URL component of the tree
-func (d *docTree) flattenURLs() []*NavInfo {
+func (d *docTree) flattenURLs(parentContext string) []*NavInfo {
+	fmt.Println("PARENT CONTEXT", parentContext)
+	fmt.Println("Name", d.Name, "URL", d.URL)
 	var u []*NavInfo
+	i := &NavInfo{Name: d.Name, Context: parentContext}
 	if d.URL != "" {
-		u = append(u, &NavInfo{Name: d.Name, URL: d.URL})
+		i.URL = d.URL
+		u = append(u, i)
 	}
+
 	if d.Children != nil {
 		for _, c := range d.Children {
-			cURL := c.flattenURLs()
+			cURL := c.flattenURLs(d.Name)
 			u = append(u, cURL...)
 		}
 	}
@@ -96,7 +102,7 @@ func (site *siteDir) nav(pivotURL string, file string) NavURL {
 
 	urls := []*NavInfo{}
 	for _, u := range menu {
-		urls = append(urls, u.flattenURLs()...)
+		urls = append(urls, u.flattenURLs(u.Name)...)
 	}
 
 	if len(urls) == 0 {
