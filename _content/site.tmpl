@@ -432,28 +432,34 @@
 <nav class="doc-Navigation">
   <div class="doc-Navigation-item">
   {{if $elem.Prev}}
-  <div class="doc-Navigation-prev">
-    <a href="{{$elem.Prev.URL}}">
-      <span class="doc-Navigation-desc">Prev</span>
+  <a class="doc-Navigation-prev" href="{{$elem.Prev.URL}}">
+    <span>
+      <img class="go-Icon" height="24" width="24" src="/images/icons/navigate_before_gm_grey_24dp.svg" alt="">
+    </span>
+    <span>
+      <span class="doc-Navigation-desc">Previous</span>
       {{if $elem.Prev.Context}}
       <span class="doc-Navigation-context">{{$elem.Prev.Context}}</span>
       {{end}}
       <span>{{$elem.Prev.Name}}</span>
-    </a>
-  </div>
+    </span>
+  </a>
   {{end}}
   </div>
   <div class="doc-Navigation-item">
   {{ if $elem.Next }}
-  <div class="doc-Navigation-next">
-    <a href="{{$elem.Next.URL}}">
+  <a class="doc-Navigation-next" href="{{$elem.Next.URL}}">
+    <span>
       <span class="doc-Navigation-desc">Next</span>
       {{if $elem.Next.Context}}
       <span class="doc-Navigation-context">{{$elem.Next.Context}}</span>
       {{end}}
       <span>{{$elem.Next.Name}}</span>
-    </a>
-  </div>
+    </span>
+    <span>
+      <img class="go-Icon" height="24" width="24" src="/images/icons/navigate_next_gm_grey_24dp.svg" alt="">
+    </span>
+  </a>
   {{end}}
   </div>
 </nav>
@@ -536,7 +542,7 @@
   <aside class="doc-TableOfContent">
     {{ if not .hidepageoutline }}
       <p>
-        <span>This page &nbsp;</span>
+        <span class="js-toc-descriptor">This page &nbsp;</span>
         <button class="go-Button go-Button--text js-expand-toc" aria-label="collapse table of content">
           <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-down-double.svg" alt="">
           <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-up-double.svg" alt="" style="display:none">

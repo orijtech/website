@@ -10,21 +10,28 @@ window.addEventListener('load', () => {
   if (main) {
     resizeDoc(main);
     main.addEventListener('click', (e) => {
-      const clickedOutsideToggler = e.target !== outlineToggler.firstChild
-        && e.target !== outlineToggler.firstElementChild
-        && e.target !== outlineToggler;
-        if (clickedOutsideToggler) {
-          if (docOutline.classList.contains(outlineClass)) {
-            docOutline.classList.remove(outlineClass)
-          }
+      const clickedOutsideToggler = (
+        e.target !== outlineToggler?.firstChild && 
+        e.target !== outlineToggler?.firstElementChild &&
+        e.target !== outlineToggler
+      );
+      if (clickedOutsideToggler) {
+        if (docOutline?.classList.contains(outlineClass)) {
+          docOutline.classList.remove(outlineClass)
         }
+      }
     });
   }
 
   // Load the toc outline for a documentation page
   const tocRoot = document.querySelector("[role='tree'].js-toc-tree");
   if (tocRoot) {
-    const hasNestedList = addLinksToTOC(document, tocRoot);
+    const headings = document.querySelectorAll("h2, h3, h4, h5, h6");
+    const hasNestedList = addLinksToTOC(tocRoot, headings);
+    const tocDescriptor = document.querySelector('.js-toc-descriptor');
+    if (tocDescriptor && headings.length === 0) {
+      tocDescriptor.style.display = 'none';
+    }
     const toggleTreeRef = document.querySelector('.js-expand-toc');
     let expanded = false;
     toggleTreeRef.children[1].style.display = 'none';
@@ -676,14 +683,13 @@ function debounce(fn, wait) {
 
 /**
  * 
- * @param {HTMLElement} contentEl where we find the header elements h1...h6
  * @param {HTMLElement} tocEl where we inject the table of content tree
+ * @param {HTMLElement[]} headings where we inject the table of content tree
  */
-function addLinksToTOC(contentEl, tocEl) {
-  const headings = contentEl.querySelectorAll("h2, h3, h4, h5, h6");
+function addLinksToTOC(targetEl, headings) {
   let tocItems;
   let prevLevel = false;
-  let parentEl = tocEl;
+  let parentEl = targetEl;
   let prevEl = parentEl;
   let tocHasNestedEl = false;
   for (let i = 0, j = headings.length; i < j; i++) {
@@ -691,8 +697,7 @@ function addLinksToTOC(contentEl, tocEl) {
     const text = heading.textContent;
     const id = text.replace(/[\W_]+/g, '_');
     heading.id = id;
-    tocItems = tocEl.getElementsByTagName("li");
-
+    tocItems = targetEl.getElementsByTagName("li");
     let level = parseInt(heading.tagName.replace(/\D/g, ''));
     if (prevLevel) {
       if (level > prevLevel) {

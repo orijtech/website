@@ -88,10 +88,16 @@
     word-wrap: break-word;
 }
 
+.Documentation pre {
+  background: var(--color-background-accented);
+  padding: 0.5rem 1.75rem;
+  border-radius: 0.25rem;
+}
+
+
 .Documentation pre,
 .Documentation code {
     color: var(--color-text);
-    
 }
 
 /** manage anchors matching with links due to fixed top navbar */
@@ -540,6 +546,10 @@
     z-index: var(--sidebar-menu-zIndex);
 }
 
+.outline-button .go-Icon {
+    transform: scale(2.5);
+}
+
 @media screen and (min-width: 48rem) {
     .outline-button {
         display: none;
@@ -614,20 +624,35 @@
     grid-row-gap: 0.5rem;
     margin: 2rem 0;
 }
-
+.doc-Navigation .go-Icon {
+    transform: scale(1.25);
+}
 .doc-Navigation-next,
 .doc-Navigation-prev {
-    display: block;
+    display: flex;
+    align-items: center;
     border: var(--border);
     border-radius: 0.2rem;
     padding: 0.65rem 1rem 0.85rem;
     width: 100%;
     height: 100%;
 }
+
 .doc-Navigation-next {
     margin-left: auto;
     text-align: right;
+    justify-content: end;
 }
+.doc-Navigation-prev {
+    justify-content: start;
+}
+.doc-Navigation-next .go-Icon {
+    padding-left: 0.5rem;
+}
+.doc-Navigation-prev .go-Icon {
+    padding-right: 0.5rem;
+}
+
 .doc-Navigation-desc {
     display: block;
     line-height: 1rem;

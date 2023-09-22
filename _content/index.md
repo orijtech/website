@@ -91,11 +91,11 @@ summary: Go is an open source programming language that makes it simple to build
             </table>
           </div>
         </div>
-        <a class="Secondary secondaryBtn" href="/play/" aria-label="Try a Tour of Go" aria-describedby="tryGoTour-description" role="button">
-          <p>Try Go</p>
+        <a class="Secondary secondaryBtn" href="/tour/welcome" aria-label="Tour of Go" aria-describedby="tryGoTour-description" role="button">
+          <p>Tour Go</p>
         </a>
         <div class="screen-reader-only" id="download-description" hidden>
-          Downloads Go and opens a new window with instructions to install Go.
+          Automatically download Go after opening a new tab with instructions to install Go.
         </div>
         <div class="screen-reader-only" id="tryGoTour-description" hidden>
           Opens a new window with A Tour of Go.
@@ -115,35 +115,6 @@ summary: Go is an open source programming language that makes it simple to build
     <div class="Hero-gopher">
       <img class="Hero-gopherLadder" src="/images/gophers/ladder.svg" alt="Go Gopher climbing a ladder.">
     </div>
-  </div>
-</section>
-<section class="TestimonialsGo">
-  <div class="GoCarousel">
-    <div class="GoCarousel-controlsContainer">
-      <div class="GoCarousel-wrapper">
-        <ul class="js-testimonialsGoQuotes TestimonialsGo-quotes">
-          {{- range $index, $element := data "/testimonials.yaml"}}
-            <li class="TestimonialsGo-quoteGroup GoCarousel-slide" id="quote_slide{{$index}}">
-              <div class="TestimonialsGo-quoteSingleItem">
-                <div class="TestimonialsGo-quoteSection">
-                  <p class="TestimonialsGo-quote">{{raw .quote}}</p>
-                  <div class="TestimonialsGo-author">— {{.name}},
-                    <span class="NoWrapSpan">{{.title}}</span>
-                    <span class="NoWrapSpan"> at {{.company}}</span>
-                  </div>
-                </div>
-              </div>
-            </li>
-          {{- end}}
-        </ul>
-      </div>
-    <button class="js-testimonialsPrev GoCarousel-controlPrev" hidden>
-      <i class="GoCarousel-icon material-icons">navigate_before</i>
-    </button>
-    <button class="js-testimonialsNext GoCarousel-controlNext">
-      <i class="GoCarousel-icon material-icons">navigate_next</i>
-    </button>
-  </div>
   </div>
 </section>
 <section class="Playground">
@@ -307,6 +278,35 @@ func main() {
     {{- end}}
     {{- end}}
     </ul>
+  </div>
+</section>
+<section class="TestimonialsGo">
+  <div class="GoCarousel">
+    <div class="GoCarousel-controlsContainer">
+      <div class="GoCarousel-wrapper">
+        <ul class="js-testimonialsGoQuotes TestimonialsGo-quotes">
+          {{- range $index, $element := data "/testimonials.yaml"}}
+            <li class="TestimonialsGo-quoteGroup GoCarousel-slide" id="quote_slide{{$index}}">
+              <div class="TestimonialsGo-quoteSingleItem">
+                <div class="TestimonialsGo-quoteSection">
+                  <p class="TestimonialsGo-quote">{{raw .quote}}</p>
+                  <div class="TestimonialsGo-author">— {{.name}},
+                    <span class="NoWrapSpan">{{.title}}</span>
+                    <span class="NoWrapSpan"> at {{.company}}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {{- end}}
+        </ul>
+      </div>
+    <button class="js-testimonialsPrev GoCarousel-controlPrev" hidden>
+      <i class="GoCarousel-icon material-icons">navigate_before</i>
+    </button>
+    <button class="js-testimonialsNext GoCarousel-controlNext">
+      <i class="GoCarousel-icon material-icons">navigate_next</i>
+    </button>
+  </div>
   </div>
 </section>
 <section class="GettingStartedGo">

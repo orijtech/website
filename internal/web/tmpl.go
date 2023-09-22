@@ -44,10 +44,8 @@ type NavURL struct {
 // flattenURLs returns a flat list of all the URL component of the tree
 func (d *docTree) flattenURLs(parentContext string) []*NavInfo {
 	var u []*NavInfo
-	i := &NavInfo{Name: d.Name, Context: parentContext}
 	if d.URL != "" {
-		i.URL = d.URL
-		u = append(u, i)
+		u = append(u, &NavInfo{Name: d.Name, URL: d.URL, Context: parentContext})
 	}
 
 	if d.Children != nil {
