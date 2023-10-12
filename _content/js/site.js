@@ -272,7 +272,6 @@ window.initFuncs = [];
         arch = 'arm64';
         osCommonName = 'MacOS';
       }
-<<<<<<< HEAD
       
       if (osAndArchEl) osAndArchEl.textContent = `${osCommonName} ${arch.toUpperCase()}`;
 
@@ -282,13 +281,6 @@ window.initFuncs = [];
           window.open(link, '_self');
         });
       }
-=======
-      osAndArchEl.textContent = `${osCommonName} ${arch.toUpperCase()}`;
-  
-      downloadBtn.addEventListener('click', () => {
-        window.open(link, '_self');
-      });
->>>>>>> 1da8f463 (accept incoming from redesign)
 
       const selectBinaryEl = document.querySelector('.js-selectBinary');
       const binaryMatrixEl = document.querySelector('.js-binaryMatrix');

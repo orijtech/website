@@ -3,12 +3,12 @@
   "Breadcrumb": true
 }-->
 
-This page describes how to configure Vim for Go development, using the [Vim-go plugin](https://github.com/fatih/vim-go). The plugin offers a variety of features, including syntax highlighting, autocompletion support via gopls, code linting, and more. 
+The [Vim-go plugin](https://github.com/fatih/vim-go) offers a variety of features, including syntax highlighting, autocompletion support via gopls, code linting, and more. This page describes how to configure Vim for Go development. 
 
 ## Prerequisites {#prerequisites}
 
-*   **Go**. The latest stable release of the language is preferable.
-    For installation instructions, see [installing Go](/doc/install).
+*   **Go**. The latest stable release of Go is recommended. For installation instructions, 
+    see [Installing Go](https://go.dev/doc/install).
 *   **Vim**. Download via [vim.org](http://vim.org). If you already have Vim, check the 
     [vim-go docs](https://github.com/fatih/vim-go/blob/master/README.md) to determine if you need to update Vim first to use the plugin.
 

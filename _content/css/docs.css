@@ -98,10 +98,6 @@
 .Documentation pre,
 .Documentation code {
     color: var(--color-text);
-<<<<<<< HEAD
-=======
-    
->>>>>>> 1da8f463 (accept incoming from redesign)
 }
 
 /** manage anchors matching with links due to fixed top navbar */
@@ -619,7 +615,6 @@
       border: none;
     }
 }
-<<<<<<< HEAD
 
 .doc-Navigation {
     clear: both;
@@ -680,5 +675,3 @@
         grid-column-gap: 1rem;
     }
 }
-=======
->>>>>>> 1da8f463 (accept incoming from redesign)
