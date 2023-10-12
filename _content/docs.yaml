@@ -38,6 +38,10 @@
       url: /doc/tutorial/workspaces
     - name: Managing dependencies
       url: /doc/modules/managing-dependencies
+    - name: Organizing a Go module
+      url: /doc/modules/layout
+    - name: Diagnostics
+      url: /doc/diagnostics
 - name: Language
   children:
     - name: A Guide to the Go Garbage Collector
@@ -78,6 +82,50 @@
       url: /doc/database/manage-connections
     - name: Avoiding SQL injection risk
       url: /doc/database/sql-injection
+- name: Codewalk
+  children:
+    - name: Guided tours of Go programs
+      children:
+        - name: First-Class Functions in Go
+          url: /doc/codewalk/functions
+        - name: "Generating arbitrary text: a Markov chain algorithm"
+          url: /doc/codewalk/markov
+        - name: Share Memory by Communicating
+          url: /doc/codewalk/sharemem
+    - name: Tools
+      children:
+        - name: About the Go command
+          url: /doc/articles/go_command
+        - name: Go Doc Comments
+          url: /doc/comment
+        - name: Debugging Go Code with GDB
+          url: /doc/gdb
+        - name: Data Race Detector
+          url: /doc/articles/race_detector
+        - name: A Quick Guide to Go's Assembler
+          url: /doc/asm
+- name: References
+  children:
+    - name: Package Documentation
+      url: https://pkg.go.dev/std
+      external: true
+    - name: Command Documentation
+      url: /doc/cmd
+    - name: Language Specification
+      url: /ref/spec
+    - name: Go Module Reference
+      url: /ref/mod
+    - name: go.mod file reference
+      url: /doc/modules/gomod-ref
+    - name: The Go Memory Model
+      url: /ref/mem
+    - name: Contribution Guide
+      url: /doc/contribute
+    - name: Release History
+      url: /doc/devel/release
+- name: Non-English Documentation
+  url: https://github.com/golang/go/wiki/NonEnglish
+  external: true
 - name: Resources
   children:
     - name: FAQ
@@ -86,11 +134,15 @@
       children:
         - name: A Video Tour of Go
           url: https://research.swtch.com/gotour
+          external: true
         - name: Code that grows with grace
           url: https://vimeo.com/53221560
+          external: true
         - name: Go concurrency patterns
           url: https://www.youtube.com/watch?v=f6kdp27TYZs
+          external: true
         - name: Advanced Go Concurrency Patterns
           url: https://www.youtube.com/watch?v=QDDwwePbDtw
+          external: true
         - name: Go Talks site
           url: /talks/

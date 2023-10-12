@@ -607,7 +607,16 @@
 {{define "treeitems"}}
   {{range .}}
     <li>
-      {{if .url}}<a href="{{.url}}">{{.name}}</a>{{else}}<span class="label">{{.name}}</span>{{end}}
+      {{if .url}}
+        <a href="{{.url}}" target="{{if .external}}external{{end}}">
+          {{.name}}
+          {{if .external}}
+          <img class="go-Icon" height="24" width="24" src="/images/icons/launch_gm_grey_24dp.svg" alt="">
+          {{end}}
+        </a>
+        {{else}}
+        <span class="label">{{.name}}</span>
+      {{end}}
       {{if .children}}
         <ul>
           {{template "treeitems" .children}}

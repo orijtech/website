@@ -808,5 +808,3 @@ func FuzzReverse(f *testing.F) {
     })
 }
 ```
-
-[Back to top](#top)
