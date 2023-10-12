@@ -22,7 +22,7 @@ The [Vim-go plugin](https://github.com/fatih/vim-go) offers a variety of feature
     git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
     ```
 
-    If you are using another package manager, consult [this list](https://github.com/fatih/vim-go#install) to determine which helper line you should use. 
+    If you are using a package manager other than Vim Package 8, see [this list](https://github.com/fatih/vim-go#install) for package manager commands. 
 
 2.  **Install the necessary binaries**. Use the vim-go command `:GoInstallBinaries`, 
     which will `go install` all the required binaries. Alternatively, you can insert the following lines into your vimrc file, save the file, and then install the vim-go plugin by running:
@@ -33,12 +33,12 @@ The [Vim-go plugin](https://github.com/fatih/vim-go) offers a variety of feature
     ':GoUpdateBinaries' } call plug#end()
     ```
 
-3.  **Familiarize yourself with vim-go’s commands**.
+3.  **Learn the vim-go’s commands**.
     See the full list of commands and settings [here](https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt). Some examples of popular commands include:
 
     *   `:GoImport[!] [path]` - Ensures that the provided package {path} is imported in the current Go buffer, using proper style and ordering. If {path} is already being imported, an error will be displayed and the buffer will be untouched. If [!] is given it will download the package with `go get`
 
-    *   `:GoBuild[!] [expand]` - Build your packages with GoBuild. You may optionally pass any valid go build flags/options. For a full list please see `go help build`.
+    *   `:GoBuild[!] [expand]` - Build your packages with `GoBuild`. You may optionally pass any valid go build flags/options. For a full list please see `go help build`.
 
     *   See which code is covered by tests with `:GoCoverage[!] [options]`. Creates a coverage profile and annotates the current file's source code.
 
