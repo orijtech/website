@@ -112,13 +112,13 @@
     - name: Command Documentation
       url: /doc/cmd
     - name: Language Specification
-      url: /ref/spec.html
+      url: /ref/spec
     - name: Go Module Reference
       url: /ref/mod
     - name: go.mod file reference
       url: /doc/modules/gomod-ref
     - name: The Go Memory Model
-      url: /ref/mem.html
+      url: /ref/mem
     - name: Contribution Guide
       url: /doc/contribute
     - name: Release History

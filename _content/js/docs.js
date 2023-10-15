@@ -695,7 +695,8 @@ function addLinksToTOC(targetEl, headings) {
   for (let i = 0, j = headings.length; i < j; i++) {
     let heading = headings[i];
     const text = heading.textContent;
-    const id = text.replace(/[\W_]+/g, '_');
+    let id = heading.getAttribute('id');
+    if (!id) id = text.replace(/[\W_]+/g, '_');
     heading.id = id;
     tocItems = targetEl.getElementsByTagName("li");
     let level = parseInt(heading.tagName.replace(/\D/g, ''));

@@ -604,7 +604,7 @@
   {{range .}}
     <li>
       {{if .url}}
-        <a href="{{.url}}" target="{{if .external}}external{{end}}">
+        <a href="{{.url}}" {{if .external}}target="_blank"{{end}}>
           {{.name}}
           {{if .external}}
           <img class="go-Icon" height="24" width="24" src="/images/icons/launch_gm_grey_24dp.svg" alt="">
