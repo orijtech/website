@@ -38,7 +38,7 @@ For more, see [Canceling in-progress operations](/doc/database/cancel-operations
 
 The following example uses a query to find out if there's enough inventory to
 support a purchase. The SQL statement returns `true` if there's enough, `false`
-if not. [`Row.Scan`](https://pkg.go.dev/database/sql#Row.Scan) copies the
+if not. [Row.Scan](https://pkg.go.dev/database/sql#Row.Scan) copies the
 boolean return value into the `enough` variable through a pointer.
 
 ```
@@ -65,7 +65,7 @@ placeholder like `$1` instead of `?`.
 
 `QueryRow` itself returns no error. Instead, `Scan` reports any error from the
 combined lookup and scan. It returns
-[`sql.ErrNoRows`](https://pkg.go.dev/database/sql#ErrNoRows) when the query
+[sql.ErrNoRows](https://pkg.go.dev/database/sql#ErrNoRows) when the query
 finds no rows.
 
 #### Functions for returning a single row {#single_row_functions}
@@ -118,7 +118,7 @@ finds no rows.
 
 You can query for multiple rows using `Query` or `QueryContext`, which return
 a `Rows` representing the query results. Your code iterates over the returned
-rows using [`Rows.Next`](https://pkg.go.dev/database/sql#Rows.Next). Each
+rows using [Rows.Next](https://pkg.go.dev/database/sql#Rows.Next). Each
 iteration calls `Scan` to copy column values into variables. 
 
 `QueryContext` works like `Query` but with a `context.Context` argument. For
@@ -126,7 +126,7 @@ more, see [Canceling in-progress operations](/doc/database/cancel-operations).
 
 The following example executes a query to return the albums by a specified
 artist. The albums are returned in an `sql.Rows`. The code uses
-[`Rows.Scan`](https://pkg.go.dev/database/sql#Rows.Scan) to copy column values
+[Rows.Scan](https://pkg.go.dev/database/sql#Rows.Scan) to copy column values
 into variables represented by pointers.
 
 ```
@@ -156,7 +156,7 @@ func albumsByArtist(artist string) ([]Album, error) {
 }
 ```
 
-Note the deferred call to [`rows.Close`](https://pkg.go.dev/database/sql#Rows.Close).
+Note the deferred call to [rows.Close](https://pkg.go.dev/database/sql#Rows.Close).
 This releases any resources held by the rows no matter how the function
 returns. Looping all the way through the rows also closes it implicitly,
 but it is better to use `defer` to make sure `rows` is closed no matter what.
@@ -244,18 +244,18 @@ if s.Valid {
 
 See more about each type in the `sql` package reference:
 
-*    [`NullBool`](https://pkg.go.dev/database/sql#NullBool)
-*    [`NullFloat64`](https://pkg.go.dev/database/sql#NullFloat64)
-*    [`NullInt32`](https://pkg.go.dev/database/sql#NullInt32)
-*    [`NullInt64`](https://pkg.go.dev/database/sql#NullInt64)
-*    [`NullString`](https://pkg.go.dev/database/sql#NullString)
-*    [`NullTime`](https://pkg.go.dev/database/sql#NullTime)
+*    [NullBool](https://pkg.go.dev/database/sql#NullBool)
+*    [NullFloat64](https://pkg.go.dev/database/sql#NullFloat64)
+*    [NullInt32](https://pkg.go.dev/database/sql#NullInt32)
+*    [NullInt64](https://pkg.go.dev/database/sql#NullInt64)
+*    [NullString](https://pkg.go.dev/database/sql#NullString)
+*    [NullTime](https://pkg.go.dev/database/sql#NullTime)
 
 ### Getting data from columns {#column_data}
 
 When looping over the rows returned by a query, you use `Scan` to copy a row’s
 column values into Go values, as described in the
-[`Rows.Scan`](https://pkg.go.dev/database/sql#Rows.Scan) reference.
+[Rows.Scan](https://pkg.go.dev/database/sql#Rows.Scan) reference.
 
 There is a base set of data conversions supported by all drivers, such as
 converting SQL `INT` to Go `int`. Some drivers extend this set of conversions;
@@ -269,13 +269,13 @@ column is a `VARCHAR` that will always contain a number, you can specify a
 numeric Go type, such as `int`, to receive the value, and `Scan` will convert
 it using `strconv.Atoi` for you.
 
-For more detail about conversions made by the `Scan` function, see the [`Rows.Scan`](https://pkg.go.dev/database/sql#Rows.Scan) reference.
+For more detail about conversions made by the `Scan` function, see the [Rows.Scan](https://pkg.go.dev/database/sql#Rows.Scan) reference.
 
 ### Handling multiple result sets {#multiple_result_sets}
 
 When your database operation might return multiple result sets, you can
 retrieve those by using
-[`Rows.NextResultSet`](https://pkg.go.dev/database/sql#Rows.NextResultSet).
+[Rows.NextResultSet](https://pkg.go.dev/database/sql#Rows.NextResultSet).
 This can be useful, for example, when you're sending SQL that separately queries
 multiple tables, returning a result set for each.
 

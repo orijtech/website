@@ -123,13 +123,13 @@
       url: /doc/contribute
     - name: Release History
       url: /doc/devel/release
-- name: Non-English Documentation
-  url: https://github.com/golang/go/wiki/NonEnglish
-  external: true
 - name: Resources
   children:
     - name: FAQ
       url: /doc/faq
+    - name: Non-English Documentation
+      url: https://github.com/golang/go/wiki/NonEnglish
+      external: true
     - name: Talks
       children:
         - name: A Video Tour of Go

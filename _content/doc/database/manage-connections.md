@@ -7,7 +7,7 @@ pool defaults. But for some advanced programs, you might need to tune the
 connection pool parameters or work with connections explicitly. This topic
 explains how.
 
-The [`sql.DB`](https://pkg.go.dev/database/sql#DB) database handle is safe for
+The [sql.DB](https://pkg.go.dev/database/sql#DB) database handle is safe for
 concurrent use by multiple goroutines
 (meaning the handle is what other languages might call “thread-safe”). Some
 other database access libraries are based on connections that can only be used
@@ -25,11 +25,11 @@ high level of parallelism for database access.
 
 You can set properties that guide how the `sql` package manages a connection
 pool. To get statistics about the effects of these properties, use
-[`DB.Stats`](https://pkg.go.dev/database/sql#DB.Stats).
+[DB.Stats](https://pkg.go.dev/database/sql#DB.Stats).
 
 #### Setting the maximum number of open connections {#max_open_connections}
 
-[`DB.SetMaxOpenConns`](https://pkg.go.dev/database/sql#DB.SetMaxOpenConns)
+[DB.SetMaxOpenConns](https://pkg.go.dev/database/sql#DB.SetMaxOpenConns)
 imposes a limit on the number of open connections. Past this limit, new
 database operations will wait for an existing operation to finish, at which
 time `sql.DB` will create another connection. By default, `sql.DB` creates a
@@ -42,7 +42,7 @@ for a new database connection.
 
 #### Setting the maximum number of idle connections {#max_idle_connections}
 
-[`DB.SetMaxIdleConns`](https://pkg.go.dev/database/sql#DB.SetMaxIdleConns)
+[DB.SetMaxIdleConns](https://pkg.go.dev/database/sql#DB.SetMaxIdleConns)
 changes the limit on the maximum number of idle connections `sql.DB`
 maintains.
 
@@ -55,7 +55,7 @@ with significant parallelism.
 
 #### Setting the maximum amount a time a connection can be idle {#max_idle_time}
 
-[`DB.SetConnMaxIdleTime`](https://pkg.go.dev/database/sql#DB.SetConnMaxIdleTime)
+[DB.SetConnMaxIdleTime](https://pkg.go.dev/database/sql#DB.SetConnMaxIdleTime)
 sets the maximum length of time a connection can be idle before it is closed.
 This causes the `sql.DB` to close connections that have been idle for longer
 than the given duration.
@@ -68,7 +68,7 @@ connections later when the system is quiet.
 
 #### Setting the maximum lifetime of connections {#max_connection_lifetime}
 
-Using [`DB.SetConnMaxLifetime`](https://pkg.go.dev/database/sql#DB.SetConnMaxLifetime)
+Using [DB.SetConnMaxLifetime](https://pkg.go.dev/database/sql#DB.SetConnMaxLifetime)
 sets the maximum length of time a connection can be held open before it is
 closed.
 
@@ -91,8 +91,8 @@ See [Executing transactions](/doc/database/execute-transactions).
 
 For other use cases where a sequence of individual operations must all execute
 on the same connection, the `sql` package provides dedicated connections.
-[`DB.Conn`](https://pkg.go.dev/database/sql#DB.Conn) obtains a dedicated
-connection, an [`sql.Conn`](https://pkg.go.dev/database/sql#Conn). The
+[DB.Conn](https://pkg.go.dev/database/sql#DB.Conn) obtains a dedicated
+connection, an [sql.Conn](https://pkg.go.dev/database/sql#Conn). The
 `sql.Conn` has methods `BeginTx`, `ExecContext`, `PingContext`,
 `PrepareContext`, `QueryContext`, and `QueryRowContext` that behave like the
 equivalent methods on DB but only use the dedicated connection. When finished

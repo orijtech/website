@@ -23,8 +23,8 @@ When you expect to execute the same SQL repeatedly, you can use an `sql.Stmt`
 to prepare the SQL statement in advance, then execute it as needed.
 
 The following example creates a prepared statement that selects a specific
-album from the database. [`DB.Prepare`](https://pkg.go.dev/database/sql#DB.Prepare)
-returns an [`sql.Stmt`](https://pkg.go.dev/database/sql#Stmt) representing a
+album from the database. [DB.Prepare](https://pkg.go.dev/database/sql#DB.Prepare)
+returns an [sql.Stmt](https://pkg.go.dev/database/sql#Stmt) representing a
 prepared statement for a given SQL text. You can pass the parameters for the
 SQL statement to `Stmt.Exec`, `Stmt.QueryRow`, or `Stmt.Query` to run the
 statement.
@@ -56,7 +56,7 @@ func AlbumByID(id int) (Album, error) {
 
 ### Prepared statement behavior {#behavior}
 
-A prepared [`sql.Stmt`](https://pkg.go.dev/database/sql#Stmt) provides the
+A prepared [sql.Stmt](https://pkg.go.dev/database/sql#Stmt) provides the
 usual `Exec`, `QueryRow`, and `Query` methods for invoking the statement. For
 more on using these methods, see [Querying for data](/doc/database/querying)
 and [Executing SQL statements that don't return data](/doc/database/change-data).

@@ -3,7 +3,7 @@
   "Breadcrumb": true
 }-->
 
-The [`database/sql`](https://pkg.go.dev/database/sql) package simplifies
+The [database/sql](https://pkg.go.dev/database/sql) package simplifies
 database access by reducing the need
 for you to manage connections. Unlike many data access APIs, with
 `database/sql` you don't explicitly open a connection, do work, then close
@@ -13,7 +13,7 @@ calling a `Close` method only when needed to free resources, such as those
 held by retrieved rows or a prepared statement.
 
 In other words, it's the database handle, represented by an
-[`sql.DB`](https://pkg.go.dev/database/sql#DB), that
+[sql.DB](https://pkg.go.dev/database/sql#DB), that
 handles connections, opening and closing them on your code's behalf. As your
 code uses the handle to execute database operations, those operations have
 concurrent access to the database. For more, see
@@ -83,14 +83,14 @@ database, either individually or in a transaction.
 
 You can get a database handle by calling either `sql.Open` (which takes a
 connection string) or `sql.OpenDB` (which takes a `driver.Connector`). Both
-return a pointer to an [`sql.DB`](https://pkg.go.dev/database/sql#DB).
+return a pointer to an [sql.DB](https://pkg.go.dev/database/sql#DB).
 
 **Note:** Be sure to keep your database credentials out of your Go source.
 For more, see [Storing database credentials](#store_credentials).
 
 #### Opening with a connection string {#open_connection_string}
 
-Use the [`sql.Open` function](https://pkg.go.dev/database/sql#Open) when you
+Use the [sql.Open function](https://pkg.go.dev/database/sql#Open) when you
 want to connect using a connection string. The format for the string will vary
 depending on the driver you're using. 
 
@@ -108,9 +108,9 @@ structured way gives you code that's more readable. The details will vary by
 driver.
 
 For example, you could replace the preceding example with the following, which
-uses the MySQL driver's [`Config`](https://pkg.go.dev/github.com/go-sql-driver/mysql#Config)
+uses the MySQL driver's [Config](https://pkg.go.dev/github.com/go-sql-driver/mysql#Config)
 to specify properties and its
-[`FormatDSN method`](https://pkg.go.dev/github.com/go-sql-driver/mysql#Config.FormatDSN)
+[FormatDSN method](https://pkg.go.dev/github.com/go-sql-driver/mysql#Config.FormatDSN)
 to build a connection string.
 
 ```
@@ -132,7 +132,7 @@ if err != nil {
 
 #### Opening with a Connector {#open_connector}
 
-Use the [`sql.OpenDB function`](https://pkg.go.dev/database/sql#OpenDB) when
+Use the [sql.OpenDB function](https://pkg.go.dev/database/sql#OpenDB) when
 you want to take advantage of driver-specific connection features that aren't
 available in a connection string. Each driver supports its own set of
 connection properties, often providing ways to customize the connection request
@@ -174,8 +174,8 @@ When you open a database handle, the `sql` package may not create a new
 database connection itself right away. Instead, it may create the connection
 when your code needs it. If you won't be using the database right away and
 want to confirm that a connection could be established, call
-[`Ping`](https://pkg.go.dev/database/sql#DB.Ping) or
-[`PingContext`](https://pkg.go.dev/database/sql#DB.PingContext).
+[Ping](https://pkg.go.dev/database/sql#DB.Ping) or
+[PingContext](https://pkg.go.dev/database/sql#DB.PingContext).
 
 Code in the following example pings the database to confirm a connection.
 
@@ -198,7 +198,7 @@ use to retrieve credentials for authenticating with your DBMS.
 
 One popular approach is to store the secrets in the environment before the
 program starts, perhaps loaded from a secret manager, and then your Go program
-can read them using [`os.Getenv`](https://pkg.go.dev/os#Getenv):
+can read them using [os.Getenv](https://pkg.go.dev/os#Getenv):
 
 ```
 username := os.Getenv("DB_USER")
@@ -220,7 +220,7 @@ Typically, you close resources by deferring a call to a `Close` function so
 that resources are released before the enclosing function exits.
 
 Code in the following example defers `Close` to free the resource held by
-[`sql.Rows`](https://pkg.go.dev/database/sql#Rows).
+[sql.Rows](https://pkg.go.dev/database/sql#Rows).
 
 ```
 rows, err := db.Query("SELECT * FROM album WHERE artist = ?", artist)
