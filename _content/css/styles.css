@@ -42,6 +42,7 @@
   --testimonial: #007f9f;
 
   /* Color Intents */
+  --color-code-background: var(--gray-9);
   --color-brand-primary: var(--turq-dark);
   --color-background: var(--white);
   --color-background-inverted: var(--slate);
@@ -87,6 +88,7 @@
   --border-card: 0.0625rem solid transparent;
   --border-code: 0.0625rem solid var(--tundora);
 
+  --color-code-background: var(--gray-2);
   --color-brand-primary: var(--turq-dark);
   --color-background: var(--gray-1);
   --color-background-accented: var(--gray-2);

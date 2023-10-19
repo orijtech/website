@@ -40,7 +40,7 @@ garbage collection, or at least some sort of safe automatic memory management wa
 
 <p>
 These considerations led to
-<a href="https://commandcenter.blogspot.com/2017/09/go-ten-years-and-climbing.html">a
+<a target="_blank" href="https://commandcenter.blogspot.com/2017/09/go-ten-years-and-climbing.html">a
 series of discussions</a> from which Go arose, first as a set of ideas and
 desiderata, then as a language.
 An overarching goal was that Go do more to help the working programmer
@@ -87,15 +87,15 @@ What's the origin of the gopher mascot?</h3>
 
 <p>
 The mascot and logo were designed by
-<a href="https://reneefrench.blogspot.com">Renée French</a>, who also designed
-<a href="https://9p.io/plan9/glenda.html">Glenda</a>,
+<a target="_blank" href="https://reneefrench.blogspot.com">Renée French</a>, who also designed
+<a target="_blank" href="https://9p.io/plan9/glenda.html">Glenda</a>,
 the Plan 9 bunny.
-A <a href="https://blog.golang.org/gopher">blog post</a>
+A <a target="_blank" href="https://blog.golang.org/gopher">blog post</a>
 about the gopher explains how it was
-derived from one she used for a <a href="https://wfmu.org/">WFMU</a>
+derived from one she used for a <a target="_blank" href="https://wfmu.org/">WFMU</a>
 T-shirt design some years ago.
 The logo and mascot are covered by the
-<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+<a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
 license.
 </p>
 
@@ -104,7 +104,7 @@ The gopher has a
 <a href="/doc/gopher/modelsheet.jpg">model sheet</a>
 illustrating his characteristics and how to represent them correctly.
 The model sheet was first shown in a
-<a href="https://www.youtube.com/watch?v=4rw_B4yY69k">talk</a>
+<a target="_blank" href="https://www.youtube.com/watch?v=4rw_B4yY69k">talk</a>
 by Renée at Gophercon in 2016.
 He has unique features; he's the <em>Go gopher</em>, not just any old gopher.
 </p>
@@ -125,7 +125,7 @@ The language's name is just plain Go, regardless.
 
 <p>
 A side note: Although the
-<a href="https://blog.golang.org/go-brand">official logo</a>
+<a target="_blank" href="https://blog.golang.org/go-brand">official logo</a>
 has two capital letters, the language name is written Go, not GO.
 </p>
 
@@ -231,10 +231,10 @@ Is Google using Go internally?</h3>
 <p>
 Yes. Go is used widely in production inside Google.
 One easy example is the server behind
-<a href="https://golang.org">golang.org</a>.
+<a target="_blank" href="https://golang.org">golang.org</a>.
 It's just the <a href="/cmd/godoc"><code>godoc</code></a>
 document server running in a production configuration on
-<a href="https://developers.google.com/appengine/">Google App Engine</a>.
+<a target="_blank" href="https://developers.google.com/appengine/">Google App Engine</a>.
 </p>
 
 <p>
@@ -265,13 +265,13 @@ but there are many more.
 <p>
 It's not just cloud, though.
 The Go Wiki includes a
-<a href="https://github.com/golang/go/wiki/GoUsers">page</a>,
+<a target="_blank" href="https://github.com/golang/go/wiki/GoUsers">page</a>,
 updated regularly, that lists some of the many companies using Go.
 </p>
 
 <p>
 The Wiki also has a page with links to
-<a href="https://github.com/golang/go/wiki/SuccessStories">success stories</a>
+<a target="_blank" href="https://github.com/golang/go/wiki/SuccessStories">success stories</a>
 about companies and projects that are using the language.
 </p>
 
@@ -340,7 +340,7 @@ Does Go support Google's protocol buffers?</h3>
 <p>
 A separate open source project provides the necessary compiler plugin and library.
 It is available at
-<a href="https://github.com/golang/protobuf">github.com/golang/protobuf/</a>.
+<a target="_blank" href="https://github.com/golang/protobuf">github.com/golang/protobuf/</a>.
 </p>
 
 
@@ -352,7 +352,7 @@ Absolutely. We encourage developers to make Go Language sites in their own langu
 However, if you choose to add the Google logo or branding to your site
 (it does not appear on <a href="/">golang.org</a>),
 you will need to abide by the guidelines at
-<a href="https://www.google.com/permissions/guidelines.html">www.google.com/permissions/guidelines.html</a>
+<a target="_blank" href="https://www.google.com/permissions/guidelines.html">www.google.com/permissions/guidelines.html</a>
 </p>
 
 <h2 id="Design">Design</h2>
@@ -413,7 +413,7 @@ Exactly what to do remains an active topic of discussion, and a future
 version of the language may be more liberal in its definition
 of an identifier.
 For instance, it might adopt some of the ideas from the Unicode
-organization's <a href="http://unicode.org/reports/tr31/">recommendations</a>
+organization's <a target="_blank" href="http://unicode.org/reports/tr31/">recommendations</a>
 for identifiers.
 Whatever happens, it must be done compatibly while preserving
 (or perhaps expanding) the way letter case determines visibility of
@@ -502,7 +502,7 @@ when used well, can result in clean error-handling code.
 
 <p>
 See the <a href="/doc/articles/defer_panic_recover.html">Defer, Panic, and Recover</a> article for details.
-Also, the <a href="https://blog.golang.org/errors-are-values">Errors are values</a> blog post
+Also, the <a target="_blank" href="https://blog.golang.org/errors-are-values">Errors are values</a> blog post
 describes one approach to handling errors cleanly in Go by demonstrating that,
 since errors are just values, the full power of Go can be deployed in error handling.
 </p>
@@ -533,7 +533,7 @@ Why build concurrency on the ideas of CSP?</h3>
 Concurrency and multi-threaded programming have over time
 developed a reputation for difficulty.  We believe this is due partly to complex
 designs such as
-<a href="https://en.wikipedia.org/wiki/POSIX_Threads">pthreads</a>
+<a target="_blank" href="https://en.wikipedia.org/wiki/POSIX_Threads">pthreads</a>
 and partly to overemphasis on low-level details
 such as mutexes, condition variables, and memory barriers.
 Higher-level interfaces enable much simpler code, even if there are still
@@ -615,7 +615,7 @@ Will you accept my language change?</h3>
 
 <p>
 People often suggest improvements to the language—the
-<a href="https://groups.google.com/group/golang-nuts">mailing list</a>
+<a target="_blank" href="https://groups.google.com/group/golang-nuts">mailing list</a>
 contains a rich history of such discussions—but very few of these changes have
 been accepted.
 </p>
@@ -746,7 +746,7 @@ Why doesn't Go have "implements" declarations?</h3>
 A Go type satisfies an interface by implementing the methods of that interface,
 nothing more.  This property allows interfaces to be defined and used without
 needing to modify existing code.  It enables a kind of
-<a href="https://en.wikipedia.org/wiki/Structural_type_system">structural typing</a> that
+<a target="_blank" href="https://en.wikipedia.org/wiki/Structural_type_system">structural typing</a> that
 promotes separation of concerns and improves code re-use, and makes it easier
 to build on patterns that emerge as the code develops.
 The semantics of interfaces is one of the main reasons for Go's nimble,
@@ -1150,7 +1150,7 @@ to a <code>float64</code> for the call to <code>math.Sqrt</code>.
 </p>
 
 <p>
-A blog post titled <a href="https://blog.golang.org/constants">Constants</a>
+A blog post titled <a target="_blank" href="https://blog.golang.org/constants">Constants</a>
 explores this topic in more detail.
 </p>
 
@@ -1288,7 +1288,7 @@ machine github.com login <i>USERNAME</i> password <i>APIKEY</i>
 </pre>
 <p>
 For GitHub accounts, the password can be a
-<a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">personal access token</a>.
+<a target="_blank" href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">personal access token</a>.
 </p>
 
 <p>

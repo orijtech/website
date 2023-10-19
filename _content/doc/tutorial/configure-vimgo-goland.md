@@ -9,7 +9,7 @@ The [Vim-go plugin](https://github.com/fatih/vim-go) offers a variety of feature
 
 *   **Go**. The latest stable release of Go is recommended. For installation instructions, 
     see [Installing Go](https://go.dev/doc/install).
-*   **Vim**. Download via [vim.org](http://vim.org). If you already have Vim, check the 
+*   **Vim**. Download via [vim.org](http://www.vim.org). If you already have Vim, check the 
     [vim-go docs](https://github.com/fatih/vim-go/blob/master/README.md) to determine if you need to update Vim first to use the plugin.
 
 
@@ -24,13 +24,12 @@ The [Vim-go plugin](https://github.com/fatih/vim-go) offers a variety of feature
 
     If you are using a package manager other than Vim Package 8, see [this list](https://github.com/fatih/vim-go#install) for package manager commands. 
 
-2.  **Install the necessary binaries**. Use the vim-go command `:GoInstallBinaries`, 
+2.  **Install the necessary binaries**. Use the vim-go command ```:GoInstallBinaries```, 
     which will `go install` all the required binaries. Alternatively, you can insert the following lines into your vimrc file, save the file, and then install the vim-go plugin by running:
 
     ```
     vim +PlugInstall:
-    call plug#begin() Plug 'fatih/vim-go', { 'do': 
-    ':GoUpdateBinaries' } call plug#end()
+    call plug#begin() Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } call plug#end()
     ```
 
 3.  **Learn the vim-go’s commands**.
