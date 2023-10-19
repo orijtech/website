@@ -1,4 +1,3 @@
-// when page loads
 window.addEventListener('load', () => {
   const outlineClass = 'show-Outline';
   // Set --js-docs-max-width for use in setting up doc max-width for small devices
@@ -75,6 +74,43 @@ window.addEventListener('load', () => {
     }
   }
 });
+
+// handle button to scroll up
+const upBtn = document.querySelector(".js-doc-Util-scrollToTop");
+const topTarget = document.querySelector('.js-doc-top');
+if (upBtn && topTarget) upBtn.addEventListener('click', () => {
+    topTarget.scrollIntoView({ behavior: 'smooth' });
+});
+
+const downBtn = document.querySelector(".js-doc-Util-scrollToBottom");
+const bottomTarget = document.querySelector('.js-doc-bottom');
+if (downBtn && bottomTarget) downBtn.addEventListener('click', () => {
+  bottomTarget.scrollIntoView({ behavior: 'smooth' });
+});
+
+function handleScroll() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.offsetHeight;
+  const winHeight = window.innerHeight;
+  const scrollPercent = scrollTop / (docHeight - winHeight);
+  const percent = Math.round(scrollPercent * 100);
+
+  // handle showing scroll to top or bottom btns
+  const showOrRemoveUpBtn = (el) => {
+    if (!el) return;
+    if (scrollTop > 5) el.classList.add('show')
+    else el.classList.remove('show');
+  };
+
+  const showOrRemoveDownBtn = (el) => {
+    if (percent < 95) el.classList.add('show');
+    else el.classList.remove('show');
+  };
+
+  showOrRemoveUpBtn(upBtn);
+  showOrRemoveDownBtn(downBtn);
+}
+window.addEventListener("scroll", handleScroll);
 
 /**
  * Tree is the navigation index component of the documentation page.

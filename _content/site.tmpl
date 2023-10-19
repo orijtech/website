@@ -465,8 +465,8 @@
 </nav>
 {{- end}}
 
-{{/* layout for the existing */}}
 {{define "doclayout"}}
+{{/* if .hidetoc, use old layout */}}
 {{if .hidetoc}}
 <article class="Doc Article">
   {{if .breadcrumb}}
@@ -492,6 +492,7 @@
   {{.Content}}
 </article>
 {{ else }}
+{{/* use new layout managed primarily by docs.js and docs.css */}}
 <article class="Documentation js-Documentation">
   <aside class="doc-Outline js-doc-Outline">
     <ul class="outline-Tree js-outline-tree" role="tree">
@@ -501,6 +502,7 @@
     </ul>
   </aside>
   <div class="doc-Main js-doc-main">
+    <span class="js-doc-top"></span>
     <button class="outline-button js-outline-button">
       <img class="go-Icon" height="24" width="24" src="/images/icons/menu_gm_grey_24dp.svg" alt="">
     </button>
@@ -538,6 +540,7 @@
     {{.Content}}
 
     {{navigation .URL "/docs.yaml" }}
+    <span class="js-doc-bottom"></span>
   </div>
   <aside class="doc-TableOfContent">
     {{ if not .hidepageoutline }}
@@ -545,12 +548,18 @@
         <span class="js-toc-descriptor">This page &nbsp;</span>
         <button class="go-Button go-Button--text js-expand-toc" aria-label="collapse table of content">
           <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-down-double.svg" alt="">
-          <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-up-double.svg" alt="" style="display:none">
+          <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-up-double.svg" alt="">
         </button>
       </p>
       <ul class="toc-Tree js-toc-tree" role="tree"></ul>
     {{ end }}
   </aside>
+  <button class="doc-Util-scrollToTop js-doc-Util-scrollToTop" type="button">
+    <img class="go-Icon" height="24" width="24" src="/images/icons/arrow_drop_up_gm_grey_24dp.svg" alt="">
+  </button>
+  <button class="doc-Util-scrollToBottom js-doc-Util-scrollToBottom" type="button">
+    <img class="go-Icon" height="24" width="24" src="/images/icons/arrow_drop_down_gm_grey_24dp.svg" alt="">
+  </button>
 </article>
 {{end}}
 {{end}}
