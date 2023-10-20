@@ -88,17 +88,33 @@ if (downBtn && bottomTarget) downBtn.addEventListener('click', () => {
   bottomTarget.scrollIntoView({ behavior: 'smooth' });
 });
 
-function handleScroll() {
+
+const docMeterEl = document.querySelector('.js-doc-Meter-scrolled');
+
+const calcPercentScrolled = () => {
   const scrollTop = window.scrollY;
   const docHeight = document.body.offsetHeight;
   const winHeight = window.innerHeight;
   const scrollPercent = scrollTop / (docHeight - winHeight);
   const percent = Math.round(scrollPercent * 100);
 
+  return percent;
+};
+
+if (docMeterEl) docMeterEl.style.setProperty('width', `${calcPercentScrolled()}vw`);
+
+function handleScroll() {
+  const percent = calcPercentScrolled();
+  console.log({ percent });
+  // handle doc meter scrolled
+  if (docMeterEl) {
+    docMeterEl.style.setProperty('width', `${percent}vw`)
+  }
+  
   // handle showing scroll to top or bottom btns
   const showOrRemoveUpBtn = (el) => {
     if (!el) return;
-    if (scrollTop > 5) el.classList.add('show')
+    if (percent > 5) el.classList.add('show')
     else el.classList.remove('show');
   };
 

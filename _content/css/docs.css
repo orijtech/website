@@ -717,3 +717,20 @@
     opacity: 1;
     visibility: visible;
 }
+
+.doc-Meter {
+    width: 100vw;
+    height: 0.4rem;
+    position: fixed;
+    background-color: var(--color-background-accented);
+    top: var(--site-header-height);
+    left: 0;
+    z-index: 4;
+}
+.doc-Meter-scrolled {
+    width: 0vw;
+    left: 0;
+    height: 0.3rem;
+    transition: width .1s linear;
+    background-color: var(--color-code-comment);
+}
