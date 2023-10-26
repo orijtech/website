@@ -15,6 +15,19 @@ main:
     url: /learn/
   - name: Docs
     url: /doc/
+    children:
+      - name: Effective Go
+        explanation: Tips for writing clear, performant, and idiomatic Go code
+        url: /doc/effective_go
+      - name: Go User Manual
+        explanation: A complete introduction to building software with Go
+        url: /doc
+      - name: Standard library
+        explanation: Reference documentation for Go's standard library
+        url: https://pkg.go.dev/std
+      - name: Release Notes
+        explanation: Learn what's new in each Go release
+        url: /doc/devel/release
   - name: Packages
     url: https://pkg.go.dev
   - name: Community
@@ -55,8 +68,6 @@ main:
               url: 'https://stackoverflow.com/tags/go',
             },
           ]
-  - name: Download
-    url: /doc/install
 
 footer:
   - name: Why Go

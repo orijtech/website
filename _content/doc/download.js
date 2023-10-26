@@ -4,24 +4,13 @@ class DownloadsController {
     this.tablist = document.querySelector('.js-tabSection');
     this.tabs = this.tablist.querySelectorAll('[role="tab"]');
     this.panels = document.querySelectorAll('[role="tabpanel"]');
-    this.downloadNotice = document.querySelector('.js-doc-main');
 
     // OS for which to display download and install steps.
     this.osName = 'Unknown OS';
-    this.osNameFromQuery = '';
-    this.version = 'go1.17';
 
     // URL to JSON containing list of installer downloads.
     const fileListUrl = '/dl/?mode=json';
     this.activeTabIndex = 0;
-
-    const dlQuery = new URL(document.URL).searchParams.get('dc') || '';
-    if (dlQuery !== '') {
-      const [queryOS] = dlQuery.split('-');
-      if (queryOS === 'darwin') this.osNameFromQuery = 'mac';
-      if (queryOS === 'windows') this.osNameFromQuery = 'windows';
-      if (queryOS === 'linux') this.osNameFromQuery = 'linux';
-    }
 
     // Get the install file list, then get names and sizes
     // for each OS supported on the install page.
@@ -44,42 +33,6 @@ class DownloadsController {
       })
       .catch(console.error);
       this.setEventListeners();
-
-      this.initDownload();
-  }
-
-  async initDownload() {
-    // https://go.dev/dl/go1.21.0.darwin-arm64.pkg
-    const notiEl = document.querySelector('.js-download-notify');
-    notiEl.style.display = 'none';
-    const dlQuery = new URL(document.URL).searchParams.get('dc') || '';
-    const detailsEl = document.querySelector('.js-goDetails');
-    const link = document.querySelector('.js-downloadLink');
-    const version = this.version;
-    if (dlQuery && dlQuery.includes('-')) {
-      const [os, arch] = dlQuery.split('-');
-      let osCommonName = '';
-      let extension = '';
-      if (os === 'windows') {
-        extension = 'msi';
-        osCommonName = 'Windows';
-      } else if (os === 'linux') {
-        extension = 'tar.gz';
-        osCommonName = 'Linux';
-      } else if (os === 'darwin') {
-        extension = 'pkg';
-        osCommonName = 'MacOS';
-      }
-      const resource = `https://go.dev/dl/${version}.${os}-${arch}.${extension}`;
-      link.href = resource;
-
-      detailsEl.textContent = `${version} ${osCommonName} ${arch.toUpperCase()}`;
-      notiEl.style.display = 'block';
-
-      setTimeout(() => {
-        window.open(resource, '_self');
-      }, 2000); // 1.5 seconds to be sure that docs page completes loading
-    }
   }
 
   setEventListeners() {
@@ -90,18 +43,17 @@ class DownloadsController {
 
   // Set the download button UI version.
   setVersion(latest) {
-    const version = this.parseVersionNumber(latest);
-    this.version = version;
-    const descEl = document.querySelector('.js-downloadDescription');
-    if (descEl) descEl.textContent = `Download (${version})`;
+    document.querySelector('.js-downloadDescription').textContent =
+      `Download (${this.parseVersionNumber(latest)})`;
   }
 
   // Updates install tab with dynamic data.
   setInstallTabData(osName) {
     const fnId = `#${osName}-filename`;
     const el = document.querySelector(fnId);
-    if (!el) return;
-    
+    if (!el) {
+      return;
+    }
     switch(osName) {
       case 'linux':
         // Update filename for linux installation step
@@ -114,10 +66,6 @@ class DownloadsController {
 
   // Detect the users OS for installation default.
   detectOS() {
-    if (this.osNameFromQuery !== '') {
-      this.osName = this.osNameFromQuery;
-      return;
-    }
     if (navigator.userAgent.indexOf('Linux') !== -1) {
       this.osName = 'linux';
     } else if (navigator.userAgent.indexOf('Mac') !== -1) {

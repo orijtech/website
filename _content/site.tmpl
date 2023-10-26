@@ -15,7 +15,6 @@
 <meta name="theme-color" content="#00add8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
 <link rel="stylesheet" href="/css/styles.css">
-<link rel="stylesheet" href="/css/docs.css">
 <link rel="icon" href="/images/favicon-gopher.png" sizes="any">
 <link rel="apple-touch-icon" href="/images/favicon-gopher-plain.png"/>
 <link rel="icon" href="/images/favicon-gopher.svg" type="image/svg+xml">
@@ -269,7 +268,6 @@
   <script src="/js/playground.js"></script>
   <script src="/js/godocs.js"></script>
   <script async src="/js/copypaste.js"></script>
-  <script async src="/js/docs.js"></script>
 </footer>
 <section class="Cookie-notice js-cookieNotice">
   <div>go.dev uses cookies from Google to deliver and enhance the quality of its services and to 
@@ -427,142 +425,54 @@
 <span class="text-muted">{{strings.Join (slice $elems (len $prefix) (len $elems)) "/"}}</span>
 {{end}}
 
-{{define "navigation url file"}}
-{{$elem := nav .url .file}}
-<nav class="doc-Navigation">
-  <div class="doc-Navigation-item">
-  {{if $elem.Prev}}
-  <a class="doc-Navigation-prev" href="{{$elem.Prev.URL}}">
-    <span>
-      <img class="go-Icon" height="24" width="24" src="/images/icons/navigate_before_gm_grey_24dp.svg" alt="">
-    </span>
-    <span>
-      <span class="doc-Navigation-desc">Previous</span>
-      {{if $elem.Prev.Context}}
-      <span class="doc-Navigation-context">{{$elem.Prev.Context}}</span>
-      {{end}}
-      <span>{{$elem.Prev.Name}}</span>
-    </span>
-  </a>
-  {{end}}
-  </div>
-  <div class="doc-Navigation-item">
-  {{ if $elem.Next }}
-  <a class="doc-Navigation-next" href="{{$elem.Next.URL}}">
-    <span>
-      <span class="doc-Navigation-desc">Next</span>
-      {{if $elem.Next.Context}}
-      <span class="doc-Navigation-context">{{$elem.Next.Context}}</span>
-      {{end}}
-      <span>{{$elem.Next.Name}}</span>
-    </span>
-    <span>
-      <img class="go-Icon" height="24" width="24" src="/images/icons/navigate_next_gm_grey_24dp.svg" alt="">
-    </span>
-  </a>
-  {{end}}
-  </div>
-</nav>
-{{- end}}
-
 {{define "doclayout"}}
-{{/* if .hidetoc, use old layout */}}
-{{if .hidetoc}}
+{{/* used from various subdirectory default.tmpl */}}
 <article class="Doc Article">
-  {{if .breadcrumb}}
-    {{ breadcrumbs . }}
-  {{end}}
-
-  {{if .title}}
-  <h1>{{.title}}</h1>
-  {{else if eq .layout "error"}}
-  <h1>Error</h1>
-  {{else if eq .layout "dir"}}
-  <h1>Directory {{breadcrumb .URL}}</h1>
-  {{else if and (eq .layout "texthtml") (strings.HasSuffix .URL ".go")}}
-  <h1>Source file {{breadcrumb .URL}}</h1>
-  {{else if eq .layout "texthtml"}}
-  <h1>Text file {{breadcrumb .URL}}</h1>
-  {{end}}
-
-  {{with .subtitle}}
-  <h2 class="subtitle">{{.}}</h2>
-  {{end}}
-
-  {{.Content}}
-</article>
-{{ else }}
-{{/* use new layout managed primarily by docs.js and docs.css */}}
-<div class="doc-Meter"><div class="doc-Meter-scrolled js-doc-Meter-scrolled"></div></div>
-<article class="Documentation js-Documentation">
-  <aside class="doc-Outline js-doc-Outline">
-    <ul class="outline-Tree js-outline-tree" role="tree">
-      <li>
-        <ul>{{treenav}}</ul>
-      </li>
-    </ul>
-  </aside>
-  <div class="doc-Main js-doc-main">
-    <span class="js-doc-top"></span>
-    <button class="outline-button js-outline-button">
-      <img class="go-Icon" height="24" width="24" src="/images/icons/menu_gm_grey_24dp.svg" alt="">
-    </button>
-    <div class="download-notify js-download-notify go-Message go-Message--notice" style="display: none;">
-      <img
-        class="go-Icon"
-        height="24"
-        width="24"
-        src="/images/icons/info_gm_grey_24dp.svg"
-        alt="Notice"
-      />&nbsp;
-      Thank you for downloading <span class="js-goDetails">Go</span>.
-      <div>Your download should begin in few seconds, otherwise please try this <a class="js-downloadLink">direct link</a></div>
-    </div>
-
-    {{if .breadcrumb}}
-    {{breadcrumbs .}}
-    {{end}}
-
-    {{if .title}}
-    <h1>{{.title}}</h1>
-    {{else if eq .layout "error"}}
-    <h1>Error</h1>
-    {{else if eq .layout "dir"}}
-    <h1>Directory {{breadcrumb .URL}}</h1>
-    {{else if and (eq .layout "texthtml") (strings.HasSuffix .URL ".go")}}
-    <h1>Source file {{breadcrumb .URL}}</h1>
-    {{else if eq .layout "texthtml"}}
-    <h1>Text file {{breadcrumb .URL}}</h1>
-    {{end}}
-
-    {{with .subtitle}}
-    <h2 class="subtitle">{{.}}</h2>
-    {{end}}
-    {{.Content}}
-
-    {{navigation .URL "/docs.yaml" }}
-    <span class="js-doc-bottom"></span>
-  </div>
-  <aside class="doc-TableOfContent">
-    {{ if not .hidepageoutline }}
-      <p>
-        <span class="js-toc-descriptor">This page &nbsp;</span>
-        <button class="go-Button go-Button--text js-expand-toc" aria-label="collapse table of content">
-          <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-down-double.svg" alt="">
-          <img class="go-Icon" height="24" width="24" src="/images/icons/chevron-up-double.svg" alt="">
-        </button>
-      </p>
-      <ul class="toc-Tree js-toc-tree" role="tree"></ul>
-    {{ end }}
-  </aside>
-  <button class="doc-Util-scrollToTop js-doc-Util-scrollToTop" type="button">
-    <img class="go-Icon" height="24" width="24" src="/images/icons/arrow_drop_up_gm_grey_24dp.svg" alt="">
-  </button>
-  <button class="doc-Util-scrollToBottom js-doc-Util-scrollToBottom" type="button">
-    <img class="go-Icon" height="24" width="24" src="/images/icons/arrow_drop_down_gm_grey_24dp.svg" alt="">
-  </button>
-</article>
+{{if .sidebar }}
+<div class="Article-columns">
+<div class="Article-content">
 {{end}}
+
+{{if .breadcrumb}}
+  {{ breadcrumbs . }}
+{{end}}
+
+{{if .title}}
+<h1>{{.title}}</h1>
+{{else if eq .layout "error"}}
+<h1>Error</h1>
+{{else if eq .layout "dir"}}
+<h1>Directory {{breadcrumb .URL}}</h1>
+{{else if and (eq .layout "texthtml") (strings.HasSuffix .URL ".go")}}
+<h1>Source file {{breadcrumb .URL}}</h1>
+{{else if eq .layout "texthtml"}}
+<h1>Text file {{breadcrumb .URL}}</h1>
+{{end}}
+
+{{with .subtitle}}
+<h2 class="subtitle">{{.}}</h2>
+{{end}}
+
+{{/* The Table of Contents is automatically inserted in this <div>.
+     Do not delete this <div>. */}}
+{{if not .hidetoc}}
+<div id="nav" class="TOC"></div>
+{{end}}
+
+
+{{.Content}}
+
+{{if .sidebar }}
+</div>
+{{if eq .sidebar "faq"}}
+{{ faqsidebar .}}
+{{else if eq .sidebar "bug"}}
+{{ bugsidebar .}}
+{{end}}
+</div>
+{{end}}
+</article>
+
 {{end}}
 
 {{define "bugsidebar"}}
@@ -608,32 +518,3 @@
   </div>
 </aside>
 {{end}}
-
-{{/* outline templating */}}
-{{define "treeitems"}}
-  {{range .}}
-    <li>
-      {{if .url}}
-        <a href="{{.url}}" {{if .external}}target="_blank"{{end}}>
-          {{.name}}
-          {{if .external}}
-          <img class="go-Icon" height="24" width="24" src="/images/icons/launch_gm_grey_24dp.svg" alt="">
-          {{end}}
-        </a>
-        {{else}}
-        <span class="label">{{.name}}</span>
-      {{end}}
-      {{if .children}}
-        <ul>
-          {{template "treeitems" .children}}
-        </ul>
-      {{end}}
-    </li>
-  {{end}}
-{{end}}
-
-{{define "treenav"}}
-  {{$docs := data "/docs.yaml"}}
-  {{template "treeitems" $docs}}
-{{end}}
-{{/* end outlining templating */}}

@@ -3,7 +3,7 @@
 }-->
 
 You can execute database transactions using an
-[sql.Tx,](https://pkg.go.dev/database/sql#Tx) which represents a transaction.
+[`sql.Tx,`](https://pkg.go.dev/database/sql#Tx) which represents a transaction.
 In addition to `Commit` and `Rollback` methods representing transaction-specific
 semantics, `sql.Tx` has all of the methods you use to perform common database
 operations. To get the `sql.Tx`, you call `DB.Begin` or `DB.BeginTx`.
@@ -25,8 +25,8 @@ methods correspond to the four steps in the workflow above.
 
 *   Begin a transaction.
 
-    [DB.Begin](https://pkg.go.dev/database/sql#DB.Begin) or
-    [DB.BeginTx](https://pkg.go.dev/database/sql#DB.BeginTx) begin a new
+    [`DB.Begin`](https://pkg.go.dev/database/sql#DB.Begin) or
+    [`DB.BeginTx`](https://pkg.go.dev/database/sql#DB.BeginTx) begin a new
     database transaction, returning an `sql.Tx` that represents it.
 *   Perform database operations.
 
@@ -34,32 +34,32 @@ methods correspond to the four steps in the workflow above.
     operations that use a single connection. To support this, `Tx` exports the
     following methods:
 
-    *   [Exec](https://pkg.go.dev/database/sql#Tx.Exec) and
-        [ExecContext](https://pkg.go.dev/database/sql#Tx.ExecContext) for making
+    *   [`Exec`](https://pkg.go.dev/database/sql#Tx.Exec) and
+        [`ExecContext`](https://pkg.go.dev/database/sql#Tx.ExecContext) for making
         database changes through SQL statements such as `INSERT`, `UPDATE`, and
         `DELETE`.
 
         For more, see [Executing SQL statements that don't return data](/doc/database/change-data).
 
-    *   [Query](https://pkg.go.dev/database/sql#Tx.Query),
-        [QueryContext](https://pkg.go.dev/database/sql#Tx.QueryContext),
-        [QueryRow](https://pkg.go.dev/database/sql#Tx.QueryRow), and
-        [QueryRowContext](https://pkg.go.dev/database/sql#Tx.QueryRowContext)
+    *   [`Query`](https://pkg.go.dev/database/sql#Tx.Query),
+        [`QueryContext`](https://pkg.go.dev/database/sql#Tx.QueryContext),
+        [`QueryRow`](https://pkg.go.dev/database/sql#Tx.QueryRow), and
+        [`QueryRowContext`](https://pkg.go.dev/database/sql#Tx.QueryRowContext)
         for operations that return rows.
 
         For more, see [Querying for data](/doc/database/querying).
 
-    *   [Prepare](https://pkg.go.dev/database/sql#Tx.Prepare),
-        [PrepareContext](https://pkg.go.dev/database/sql#Tx.PrepareContext),
-        [Stmt](https://pkg.go.dev/database/sql#Tx.Stmt), and
-        [StmtContext](https://pkg.go.dev/database/sql#Tx.StmtContext) for
+    *   [`Prepare`](https://pkg.go.dev/database/sql#Tx.Prepare),
+        [`PrepareContext`](https://pkg.go.dev/database/sql#Tx.PrepareContext),
+        [`Stmt`](https://pkg.go.dev/database/sql#Tx.Stmt), and
+        [`StmtContext`](https://pkg.go.dev/database/sql#Tx.StmtContext) for
         pre-defining prepared statements.
 
         For more, see [Using prepared statements](/doc/database/prepared-statements).
 
 *   End the transaction with _one_ of the following:
     *   Commit the transaction using
-        [Tx.Commit](https://pkg.go.dev/database/sql#Tx.Commit).
+        [`Tx.Commit`](https://pkg.go.dev/database/sql#Tx.Commit).
 
         If `Commit` succeeds (returns a `nil` error), then all the query results
         are confirmed as valid and all the executed updates are applied to the
@@ -67,7 +67,7 @@ methods correspond to the four steps in the workflow above.
         results from `Query` and `Exec` on the `Tx` should be discarded as
         invalid.
     *   Roll back the transaction using
-        [Tx.Rollback](https://pkg.go.dev/database/sql#Tx.Rollback).
+        [`Tx.Rollback`](https://pkg.go.dev/database/sql#Tx.Rollback).
 
         Even if `Tx.Rollback` fails, the transaction will no longer be valid,
         nor will it have been committed to the database.

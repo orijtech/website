@@ -3,7 +3,7 @@
 }-->
 
 You can manage in-progress operations by using Go
-[context.Context](https://pkg.go.dev/context#Context). A `Context` is a
+[`context.Context`](https://pkg.go.dev/context#Context). A `Context` is a
 standard Go data value that can report whether the overall operation it
 represents has been canceled and is no longer needed. By passing a
 `context.Context` across function calls and services in your application, those
@@ -25,11 +25,11 @@ making it easier for you to use `Context` throughout your application.
 
 You can use a `Context` to set a timeout or deadline after which an operation
 will be canceled. To derive a `Context` with a timeout or deadline, call
-[context.WithTimeout](https://pkg.go.dev/context#WithTimeout) or
-[context.WithDeadline](https://pkg.go.dev/context#WithDeadline).
+[`context.WithTimeout`](https://pkg.go.dev/context#WithTimeout) or
+[`context.WithDeadline`](https://pkg.go.dev/context#WithDeadline).
 
 Code in the following timeout example derives a `Context` and passes it into
-the `sql.DB` [QueryContext](https://pkg.go.dev/database/sql#DB.QueryContext)
+the `sql.DB` [`QueryContext`](https://pkg.go.dev/database/sql#DB.QueryContext)
 method.
 
 ```

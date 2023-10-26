@@ -55,6 +55,7 @@ var (
 	verbose    = flag.Bool("v", false, "verbose mode")
 	goroot     = flag.String("goroot", runtime.GOROOT(), "Go root directory")
 	contentDir = flag.String("content", "", "path to _content directory")
+	v2Website  = flag.Bool("v2", true, "run the v2 website")
 
 	runningOnAppEngine = false // os.Getenv("PORT") != ""
 
@@ -141,6 +142,8 @@ func NewHandler(contentDir, goroot string) http.Handler {
 	var contentFS fs.FS
 	if contentDir != "" {
 		contentFS = os.DirFS(contentDir)
+	} else if *v2Website { // TODO: Add a sub-path "/v2" to the mux for routing to _content_v2
+		contentFS = website.ContentV2()
 	} else {
 		contentFS = website.Content()
 	}

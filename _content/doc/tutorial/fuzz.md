@@ -1,5 +1,6 @@
 <!--{
   "Title": "Tutorial: Getting started with fuzzing",
+  "HideTOC": true,
   "Breadcrumb": true
 }-->
 
@@ -808,3 +809,5 @@ func FuzzReverse(f *testing.F) {
     })
 }
 ```
+
+[Back to top](#top)

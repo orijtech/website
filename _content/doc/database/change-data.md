@@ -14,7 +14,7 @@ An `ExecContext` method works as an `Exec` method does, but with an additional
 [Canceling in-progress operations](/doc/database/cancel-operations).
 
 Code in the following example uses
-[DB.Exec](https://pkg.go.dev/database/sql#DB.Exec) to execute a
+[`DB.Exec`](https://pkg.go.dev/database/sql#DB.Exec) to execute a
 statement to add a new record album to an `album` table.
 
 ```
@@ -34,7 +34,7 @@ func AddAlbum(alb Album) (int64, error) {
 }
 ```
 
-`DB.Exec` returns values: an [sql.Result](https://pkg.go.dev/database/sql#Result)
+`DB.Exec` returns values: an [`sql.Result`](https://pkg.go.dev/database/sql#Result)
 and an error. When the error is `nil`, you can use the `Result` to get the ID
 of the last inserted item (as in the example) or to retrieve the number of rows
 affected by the operation.
