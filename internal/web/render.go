@@ -75,6 +75,7 @@ func (site *Site) renderHTML(p Page, tmpl string, r *http.Request) ([]byte, erro
 		"page":         sd.page,
 		"pages":        sd.pages,
 		"play":         sd.play,
+		"nav":          sd.nav,
 		"request":      func() *http.Request { return r },
 		"path":         func() pkgPath { return pkgPath{} },
 		"strings":      func() pkgStrings { return pkgStrings{} },

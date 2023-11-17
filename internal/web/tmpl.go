@@ -23,6 +23,40 @@ type siteDir struct {
 	dir string
 }
 
+// A docTree describes a document navigation structure
+type docTree struct {
+	Name     string     `yaml:"name"`
+	URL      string     `yaml:"url"`
+	Children []*docTree `yaml:"children"`
+}
+
+type NavInfo struct {
+	Name    string
+	URL     string
+	Context string
+}
+
+type NavURL struct {
+	Prev *NavInfo
+	Next *NavInfo
+}
+
+// flattenURLs returns a flat list of all the URL component of the tree
+func (d *docTree) flattenURLs(parentContext string) []*NavInfo {
+	var u []*NavInfo
+	if d.URL != "" {
+		u = append(u, &NavInfo{Name: d.Name, URL: d.URL, Context: parentContext})
+	}
+
+	if d.Children != nil {
+		for _, c := range d.Children {
+			cURL := c.flattenURLs(d.Name)
+			u = append(u, cURL...)
+		}
+	}
+	return u
+}
+
 func toString(x interface{}) string {
 	switch x := x.(type) {
 	case string:
@@ -47,6 +81,45 @@ func (site *siteDir) data(name string) (interface{}, error) {
 		return nil, err
 	}
 	return d, nil
+}
+
+// nav expects a file containing a data structured to match a slice of docTree
+func (site *siteDir) nav(pivotURL string, file string) NavURL {
+	navURL := NavURL{}
+
+	data, err := site.readFile(site.dir, file)
+	if err != nil {
+		return navURL
+	}
+	menu := []*docTree{}
+	if err := yaml.Unmarshal(data, &menu); err != nil {
+		return navURL
+	}
+
+	urls := []*NavInfo{}
+	for _, u := range menu {
+		urls = append(urls, u.flattenURLs(u.Name)...)
+	}
+
+	if len(urls) == 0 {
+		return navURL
+	}
+
+	for i := 0; i < len(urls); i++ {
+		found := urls[i]
+		if found.URL == pivotURL {
+			prev := i - 1
+			if prev >= 0 {
+				navURL.Prev = urls[prev]
+			}
+			next := i + 1
+			if next < len(urls) {
+				navURL.Next = urls[next]
+			}
+			break
+		}
+	}
+	return navURL
 }
 
 func first(n int, list reflect.Value) reflect.Value {

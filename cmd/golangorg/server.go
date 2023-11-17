@@ -24,7 +24,6 @@ import (
 	"net/url"
 	"os"
 	"path"
-	"path/filepath"
 	"runtime"
 	"runtime/debug"
 	"strings"
@@ -56,8 +55,9 @@ var (
 	verbose    = flag.Bool("v", false, "verbose mode")
 	goroot     = flag.String("goroot", runtime.GOROOT(), "Go root directory")
 	contentDir = flag.String("content", "", "path to _content directory")
+	v2Website  = flag.Bool("v2", true, "run the v2 website")
 
-	runningOnAppEngine = os.Getenv("PORT") != ""
+	runningOnAppEngine = false // os.Getenv("PORT") != ""
 
 	tipFlag = flag.Bool("tip", runningOnAppEngine, "load git content for tip.golang.org")
 
@@ -75,13 +75,13 @@ func main() {
 	// so that updates to those files appear on the local dev instance without restarting.
 	// On App Engine, leave contentDir empty, so we use the embedded copy,
 	// which is much faster to access than the simulated file system.
-	if *contentDir == "" && !runningOnAppEngine {
-		repoRoot := "../.."
-		if _, err := os.Stat("_content"); err == nil {
-			repoRoot = "."
-		}
-		*contentDir = filepath.Join(repoRoot, "_content")
-	}
+	// if *contentDir == "" && !runningOnAppEngine {
+	// 	repoRoot := "../.."
+	// 	if _, err := os.Stat("_content"); err == nil {
+	// 		repoRoot = "."
+	// 	}
+	// 	*contentDir = filepath.Join(repoRoot, "_content")
+	// }
 
 	if runningOnAppEngine {
 		log.Print("golang.org server starting")
@@ -142,6 +142,8 @@ func NewHandler(contentDir, goroot string) http.Handler {
 	var contentFS fs.FS
 	if contentDir != "" {
 		contentFS = os.DirFS(contentDir)
+	} else if *v2Website { // TODO: Add a sub-path "/v2" to the mux for routing to _content_v2
+		contentFS = website.ContentV2()
 	} else {
 		contentFS = website.Content()
 	}
@@ -239,7 +241,7 @@ func NewHandler(contentDir, goroot string) http.Handler {
 
 	var h http.Handler = mux
 	h = addCSP(mux)
-	h = hostEnforcerHandler(h)
+	// h = hostEnforcerHandler(h)
 	h = hostPathHandler(h)
 	return h
 }
